@@ -33,9 +33,9 @@ public class arithmetic extends Activity {
     public void onConfirmButtonClick(View view) {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(arithmetic.this);
-        builder.setTitle("Результат")
+        builder.setTitle(R.string.alertTitle)
                 .setCancelable(false)
-                .setNegativeButton("ОК",
+                .setNegativeButton(R.string.stringOK,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
@@ -45,7 +45,7 @@ public class arithmetic extends Activity {
         EditText answer = (EditText)findViewById(R.id.inputAnswer);
 
         if(answer.getText().toString().isEmpty()) {
-            builder.setMessage("Введите ответ!");
+            builder.setMessage(R.string.enterAnswer);
             AlertDialog alert = builder.create();
             alert.show();
 
@@ -56,13 +56,13 @@ public class arithmetic extends Activity {
         answer.setText("");
 
         if(!(checkEquation(answerNumber))) {
-            builder.setMessage("Неправильно! Попробуйте еще раз.");
+            builder.setMessage(R.string.incorrectTryAgain);
             AlertDialog alert = builder.create();
             alert.show();
 
             generateEquation();
         } else {
-            builder.setMessage("Правильно!");
+            builder.setMessage(R.string.correctAnswer);
             AlertDialog alert = builder.create();
             alert.show();
         }

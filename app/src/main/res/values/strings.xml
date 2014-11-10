@@ -7,5 +7,9 @@
     <string name="stringOK">OK</string>
     <string name="taskLabel">Решите пример:</string>
     <string name="inputHint">Введите ответ</string>
+    <string name="alertTitle">Результат</string>
+    <string name="enterAnswer">Введите ответ</string>
+    <string name="incorrectTryAgain">Неправильно! Решите новый пример</string>
+    <string name="correctAnswer">Правильно!</string>
 
 </resources>
