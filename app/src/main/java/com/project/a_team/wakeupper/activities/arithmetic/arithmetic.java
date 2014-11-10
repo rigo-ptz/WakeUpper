@@ -37,6 +37,7 @@ public class arithmetic extends Activity {
                 .setCancelable(false)
                 .setNegativeButton(R.string.stringOK,
                         new DialogInterface.OnClickListener() {
+                            @Override
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.cancel();
                             }
