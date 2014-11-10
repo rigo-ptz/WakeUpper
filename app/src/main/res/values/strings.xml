@@ -4,5 +4,8 @@
     <string name="app_name">WakeUpper</string>
     <string name="hello_world">Azaza</string>
     <string name="action_settings">Settings</string>
+    <string name="stringOK">OK</string>
+    <string name="taskLabel">Решите пример:</string>
+    <string name="inputHint">Введите ответ</string>
 
 </resources>
