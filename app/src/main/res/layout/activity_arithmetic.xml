@@ -35,8 +35,7 @@
         android:layout_below="@+id/task_label"
         android:layout_alignRight="@+id/confirmButton"
         android:layout_alignEnd="@+id/confirmButton"
-        android:layout_marginTop="44dp"
-        android:layout_alignParentStart="false" />
+        android:layout_marginTop="44dp"/>
 
     <EditText
         android:layout_width="wrap_content"

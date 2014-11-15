@@ -1,19 +1,17 @@
-package com.project.a_team.wakeupper.activities.arithmetic;
+package com.project.a_team.wakeupper.activities;
 
 
 import android.app.Activity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import java.util.Random;
+import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import com.project.a_team.wakeupper.R;
 
-import org.w3c.dom.Text;
+import java.util.Random;
 
 
 

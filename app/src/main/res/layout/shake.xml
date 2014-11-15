@@ -1,0 +1,40 @@
+<!--created by Yamushev Igor on 04.11.14
+     PetrSU, TPPO 2014. 22305 group-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:weightSum="1"
+    android:gravity="center_horizontal">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:clickable="false"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/instruction"
+        android:id="@+id/tvInstr" />
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:id="@+id/ivImg"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.36"
+        android:layout_marginTop="50dp"
+        android:contentDescription="@string/imgAbout"/>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:id="@+id/pbBar"
+        android:layout_marginTop="50dp"
+        android:progress="0"
+        android:max="120"/>
+
+</LinearLayout>
