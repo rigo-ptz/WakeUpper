@@ -35,7 +35,9 @@
         android:layout_below="@+id/task_label"
         android:layout_alignRight="@+id/confirmButton"
         android:layout_alignEnd="@+id/confirmButton"
-        android:layout_marginTop="44dp"/>
+        android:layout_marginTop="44dp" />
+        <!--android:layout_alignParentStart="false"-->  <!-- error/ Yamushev Igor 15.11.14-->
+
 
     <EditText
         android:layout_width="wrap_content"

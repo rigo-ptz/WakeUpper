@@ -1,5 +1,5 @@
-<!--created by Yamushev Igor on 04.11.14
-     PetrSU, TPPO 2014. 22305 group-->
+<!-- For Shake. Created by Yamushev Igor on 04.11.14 -->
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"

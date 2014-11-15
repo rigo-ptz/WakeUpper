@@ -12,7 +12,7 @@
     <string name="incorrectTryAgain">Неправильно! Решите новый пример</string>
     <string name="correctAnswer">Правильно!</string>
 
-    <!-- for ShakeActivity.  Created by Yamushev Igor on 15.11.14-->
+    <!-- For Shake. Created by Yamushev Igor on 15.11.14 -->
     <string name="instruction">Потряси меня \n и заполни \n прогресс-бар</string>
     <string name="imgAbout"> Shaker Image </string>
 
