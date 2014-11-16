@@ -1,12 +1,32 @@
+<!-- For Main. Created by Yamushev Igor on 16.11.14 -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <AnalogClock
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_green_light"
+        android:id="@+id/analogClock"/>
+
     <TextView
-        android:text="@string/hello_world"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Alarms"
+        android:paddingTop="@dimen/paddingTop"
+        android:textSize="@dimen/bigTxtSize"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:drawableLeft="@drawable/addnew1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/addNewAlarm"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/mediumTxtSize"/>
 
 </LinearLayout>
