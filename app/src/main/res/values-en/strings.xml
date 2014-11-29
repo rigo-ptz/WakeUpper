@@ -17,6 +17,6 @@
 
     <!-- For Main. Created by Yamushev Igor on 16.11.14 -->
     <string name="Alarms"> Alarms: </string>
-    <string name="addNewAlarm">  <u> Add new </u> </string>
+    <string name="addNewAlarm">  Add new </string>
 
 </resources>
