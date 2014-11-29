@@ -41,9 +41,9 @@ public class ShakeActivity extends Activity implements SensorEventListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.shake);
 
-        // вывод изображения из ресурсов в ImageView
+        /*// вывод изображения из ресурсов в ImageView
         shakeImage = (ImageView) findViewById(R.id.ivImg);
-        shakeImage.setImageResource(R.drawable.shake);
+        shakeImage.setImageResource(R.drawable.shake);*/
 
         // нашли прогрессбар
         myProgressBar = (ProgressBar) findViewById(R.id.pbBar);

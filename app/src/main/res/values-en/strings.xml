@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">WakeUpper</string>
+    <string name="settingsManifestLabel">Settings</string>
+    <string name="shakeManifestLabel">Shake</string>
+
     <string name="hello_world">Azaza</string>
     <string name="action_settings">Settings</string>
     <string name="stringOK">OK</string>

@@ -22,6 +22,7 @@
     <ImageView
         android:layout_width="200dp"
         android:layout_height="150dp"
+        android:src="@drawable/shake"
         android:id="@+id/ivImg"
         android:layout_gravity="center_horizontal"
         android:layout_weight="0.36"

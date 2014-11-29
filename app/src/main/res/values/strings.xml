@@ -2,6 +2,9 @@
 <resources>
 
     <string name="app_name">WakeUpper</string>
+    <string name="settingsManifestLabel">Settings</string>
+    <string name="shakeManifestLabel">Shake</string>
+
     <string name="hello_world">Azaza</string>
     <string name="action_settings">Settings</string>
     <string name="stringOK">OK</string>
@@ -14,7 +17,7 @@
 
     <!-- For Shake. Created by Yamushev Igor on 15.11.14 -->
     <string name="instruction">Потряси меня \n и заполни \n прогресс-бар</string>
-    <string name="imgAbout"> Shaker Image </string>
+    <string name="imgAbout">Shaker Image</string>
 
     <!-- For Main. Created by Yamushev Igor on 16.11.14 -->
     <string name="Alarms"> Будильники: </string>

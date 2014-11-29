@@ -19,6 +19,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settingsManifestLabel">
+            <intent-filter>
+                <action android:name="com.project.a_team.wakeupper.intent.action.SETTINGS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activities.ShakeActivity"
+            android:label="@string/shakeManifestLabel">
+            <intent-filter>
+                <action android:name="com.project.a_team.wakeupper.intent.action.SHAKE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
