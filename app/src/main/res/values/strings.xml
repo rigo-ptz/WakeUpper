@@ -18,6 +18,6 @@
 
     <!-- For Main. Created by Yamushev Igor on 16.11.14 -->
     <string name="Alarms"> Будильники: </string>
-    <string name="addNewAlarm">  Добавить новый </string>
+    <string name="addNewAlarm">  <u> Добавить новый </u> </string>
 
 </resources>
