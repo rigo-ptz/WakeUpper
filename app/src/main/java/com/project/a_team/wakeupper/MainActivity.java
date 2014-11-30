@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 
+import com.project.a_team.wakeupper.activities.ArithmeticActivity;
+
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -55,6 +57,10 @@ public class MainActivity extends Activity implements OnClickListener {
                 /*//проверка
                 Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();*/
                 Intent intent = new Intent(this, SettingsActivity.class);
+
+                // Testing ArithmeticActivity
+                //Intent intent = new Intent(this, ArithmeticActivity.class);
+
                 startActivity(intent);
                 break;
             default:

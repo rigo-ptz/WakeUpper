@@ -1,10 +1,11 @@
 package com.project.a_team.wakeupper.activities;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -13,9 +14,7 @@ import com.project.a_team.wakeupper.R;
 
 import java.util.Random;
 
-
-
-public class arithmetic extends Activity {
+public class ArithmeticActivity extends Activity {
 
     private int equationSum;
 
@@ -25,12 +24,12 @@ public class arithmetic extends Activity {
         setContentView(R.layout.activity_arithmetic);
 
         generateEquation();
-
     }
+
 
     public void onConfirmButtonClick(View view) {
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(arithmetic.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(ArithmeticActivity.this);
         builder.setTitle(R.string.alertTitle)
                 .setCancelable(false)
                 .setNegativeButton(R.string.stringOK,
@@ -61,9 +60,7 @@ public class arithmetic extends Activity {
 
             generateEquation();
         } else {
-            builder.setMessage(R.string.correctAnswer);
-            AlertDialog alert = builder.create();
-            alert.show();
+            finish();
         }
     }
 
@@ -81,8 +78,11 @@ public class arithmetic extends Activity {
             equationSum = equationX - equationY;
         }
 
-        TextView task = (TextView)findViewById(R.id.task_equation);
+        TextView task = (TextView)findViewById(R.id.task);
         task.setText(equationX.toString() + " " + equationSign + " " + equationY.toString());
+
+        // TEST
+        equationSum = 123;
     }
 
     private boolean checkEquation(int answerNumber) {

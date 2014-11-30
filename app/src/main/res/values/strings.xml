@@ -4,13 +4,15 @@
     <string name="app_name">WakeUpper</string>
     <string name="settingsManifestLabel">Settings</string>
     <string name="shakeManifestLabel">Shake</string>
-
+    <string name="arithmeticManifestLabel">Arithmetic</string>
     <string name="hello_world">Azaza</string>
     <string name="action_settings">Settings</string>
+
+    <!-- For Arithmetic -->
     <string name="stringOK">OK</string>
     <string name="taskLabel">Решите пример:</string>
-    <string name="inputHint">Введите ответ</string>
     <string name="alertTitle">Результат</string>
+    <string name="checkAnswer">Проверить</string>
     <string name="enterAnswer">Введите ответ</string>
     <string name="incorrectTryAgain">Неправильно! Решите новый пример</string>
     <string name="correctAnswer">Правильно!</string>
@@ -22,5 +24,8 @@
     <!-- For Main. Created by Yamushev Igor on 16.11.14 -->
     <string name="Alarms"> Будильники: </string>
     <string name="addNewAlarm"> Добавить новый </string>
+    <string name="title_activity_arithmetic">ArithmeticActivity</string>
+    <string name="buttonCancel">Отменить</string>
+    <string name="buttonSave">Сохранить</string>
 
 </resources>

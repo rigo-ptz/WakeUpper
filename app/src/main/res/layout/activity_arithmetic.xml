@@ -1,43 +1,41 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context=".arithmetic"
-    android:background="@color/backgroundColor">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stringOK"
-        android:id="@+id/confirmButton"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onConfirmButtonClick" />
+<RelativeLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/taskLabel"
-        android:id="@+id/task_label"
-        android:layout_alignParentTop="true"
+        android:id="@+id/taskLabel"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="54dp"
+        android:layout_above="@+id/task"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/task_equation"
-        android:layout_below="@+id/task_label"
-        android:layout_alignRight="@+id/confirmButton"
-        android:layout_alignEnd="@+id/confirmButton"
-        android:layout_marginTop="44dp" />
-        <!--android:layout_alignParentStart="false"-->  <!-- error/ Yamushev Igor 15.11.14-->
+        android:id="@+id/task"
+        android:layout_gravity="center_horizontal"
+        android:layout_toEndOf="@+id/checkButton"
+        android:layout_marginBottom="65dp"
+        android:layout_above="@+id/checkButton"
+        android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkAnswer"
+        android:id="@+id/checkButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="171dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:onClick="onConfirmButtonClick" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -45,8 +43,6 @@
         android:inputType="numberSigned"
         android:ems="10"
         android:id="@+id/inputAnswer"
-        android:layout_above="@+id/confirmButton"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/inputHint" />
-
+        android:layout_above="@+id/checkButton"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
