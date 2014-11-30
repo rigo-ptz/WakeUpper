@@ -5,6 +5,7 @@
     <string name="settingsManifestLabel">Settings</string>
     <string name="shakeManifestLabel">Shake</string>
     <string name="arithmeticManifestLabel">Arithmetic</string>
+    <string name="title_activity_arithmetic">ArithmeticActivity</string>
     <string name="hello_world">Azaza</string>
     <string name="action_settings">Settings</string>
 
@@ -24,8 +25,31 @@
     <!-- For Main. Created by Yamushev Igor on 16.11.14 -->
     <string name="Alarms"> Будильники: </string>
     <string name="addNewAlarm"> Добавить новый </string>
-    <string name="title_activity_arithmetic">ArithmeticActivity</string>
+
+    <!-- For Settings -->
     <string name="buttonCancel">Отменить</string>
     <string name="buttonSave">Сохранить</string>
+    <string name="confirm">Подтвердите выбор</string>
+    <string name="confirmCancel">Отменить изменения?</string>
+    <string name="confirmSave">Сохранить изменения?</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="timeLabel">Время:</string>
+    <string name="daysLabel">Дни:</string>
+    <string name="daysMn">Пн</string>
+    <string name="daysTu">Вт</string>
+    <string name="daysWe">Ср</string>
+    <string name="daysTh">Чт</string>
+    <string name="daysFr">Пт</string>
+    <string name="daysSa">Сб</string>
+    <string name="daysSu">Вс</string>
+    <string name="volumeLabel">Громкость:</string>
+    <string name="signalLabel">Мелодия:</string>
+    <string name="activityLabel">Активность:</string>
+    <string name="activityArithmetic">Арифметика</string>
+    <string name="activityShake">Тряска</string>
+    <string name="activityChoose">Выбор</string>
+    <string name="activityPhrase">Ввод по образцу</string>
+    <string name="activityNoActivity">Без Активности</string>
 
 </resources>

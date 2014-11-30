@@ -1,5 +1,6 @@
 package com.project.a_team.wakeupper;
 
+import android.media.RingtoneManager;
 import android.net.Uri;
 import android.text.format.Time;
 
@@ -16,11 +17,13 @@ public class Alarm {
     private Integer volume;
     private Integer activity;
 
+    // Not complete yet
     public Alarm() {
         ID = -1;
         state = true;
         time = new Time();
         days = "0000000";
+        signal = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         vibration = false;
         activity = 0;
     }

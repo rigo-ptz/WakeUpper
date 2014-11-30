@@ -8,6 +8,7 @@ package com.project.a_team.wakeupper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Contacts;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
     //кнопка добавления нового будильника
     TextView tvAdd;
+
+    // Для передачи в SettingsActivity
+    public static final String alarmID = "com.project.a_team.wakeupper.ALARM_ID";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,9 @@ public class MainActivity extends Activity implements OnClickListener {
                 /*//проверка
                 Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();*/
                 Intent intent = new Intent(this, SettingsActivity.class);
+
+                // TEST
+                intent.putExtra(alarmID, "1");
 
                 // Testing ArithmeticActivity
                 //Intent intent = new Intent(this, ArithmeticActivity.class);
