@@ -17,7 +17,6 @@ public class Alarm {
     private Integer volume;
     private Integer activity;
 
-    // Not complete yet
     public Alarm() {
         ID = -1;
         state = true;
@@ -25,6 +24,7 @@ public class Alarm {
         days = "0000000";
         signal = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         vibration = false;
+        volume = 0;
         activity = 0;
     }
 

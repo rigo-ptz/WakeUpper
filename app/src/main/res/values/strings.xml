@@ -51,5 +51,6 @@
     <string name="activityChoose">Выбор</string>
     <string name="activityPhrase">Ввод по образцу</string>
     <string name="activityNoActivity">Без Активности</string>
+    <string name="vibrationLabel">Вибрация:</string>
 
 </resources>

@@ -14,9 +14,11 @@ import android.os.Bundle;
 import android.text.format.Time;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -47,6 +49,19 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         /* Слушатели */
         final SeekBar seekbar = (SeekBar)findViewById(R.id.volume);
         seekbar.setOnSeekBarChangeListener(this);
+
+        Switch vibro = (Switch)findViewById(R.id.vibration);
+
+        vibro.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(buttonView.isChecked()) {
+                    alarm.setVibration(true);
+                }
+                else {
+                    alarm.setVibration(false);
+                }
+            }
+        });
 
         /* getSettings will be here */
         alarm.setTime(new Time());
