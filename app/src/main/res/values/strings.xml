@@ -53,4 +53,7 @@
     <string name="activityNoActivity">Без Активности</string>
     <string name="vibrationLabel">Вибрация:</string>
 
+    <!-- For UnblockActivity -->
+    <string name="unblock">Отключить</string>
+
 </resources>
