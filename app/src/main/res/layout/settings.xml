@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:id="@+id/layout1">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,21 +14,23 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/layout2">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:weightSum="1">
+                android:weightSum="1"
+                android:id="@+id/layout3">
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/buttonCancel"
                     android:id="@+id/cancelButton"
-                    android:layout_weight="0.27"
+                    android:layout_weight="0.29"
                     android:onClick="onCancelButtonClick" />
 
                 <Button
@@ -35,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/buttonSave"
                     android:id="@+id/confirmButton"
-                    android:layout_weight="0.69"
+                    android:layout_weight="0.67"
                     android:onClick="onConfirmButtonClick" />
             </LinearLayout>
 
@@ -65,7 +68,8 @@
             <RelativeLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/layout4">
 
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -128,10 +132,10 @@
                     android:text="@string/daysSa"
                     android:id="@+id/checkBox6"
                     android:checked="false"
-                    android:layout_below="@+id/checkBox3"
-                    android:layout_toRightOf="@+id/checkBox3"
                     android:layout_toEndOf="@+id/checkBox3"
-                    android:onClick="setDays" />
+                    android:onClick="setDays"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/checkBox5" />
 
                 <CheckBox
                     android:layout_width="wrap_content"
@@ -139,10 +143,9 @@
                     android:text="@string/daysSu"
                     android:id="@+id/checkBox7"
                     android:checked="false"
-                    android:layout_alignTop="@+id/checkBox6"
-                    android:layout_alignLeft="@+id/checkBox5"
-                    android:layout_alignStart="@+id/checkBox5"
-                    android:onClick="setDays" />
+                    android:onClick="setDays"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/checkBox6" />
             </RelativeLayout>
 
             <TextView
@@ -196,7 +199,8 @@
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/layout5">
 
                 <RadioGroup
                     android:layout_width="wrap_content"

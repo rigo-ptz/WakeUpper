@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
     private Alarm alarm;
     private Boolean newAlarm;
-    private TextView timePicker;
+    private TextView timePickerLabel;
     private TextView signal;
 
     @Override
@@ -37,10 +38,12 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         Intent intent = getIntent();
         String aID = intent.getStringExtra(MainActivity.alarmID);
         if(aID.equals("-1")) {
-            Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();
-        }
+            newAlarm = true;
+            Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
+        } else
+            newAlarm = false;
 
-        alarm = new Alarm();
+
 
         /* Слушатели */
         final SeekBar seekbar = (SeekBar)findViewById(R.id.volume);
@@ -59,24 +62,69 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             }
         });
 
-        /* getSettings will be here */
-        alarm.setTime(new Time());
-        alarm.setSignal(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
+        alarm = new Alarm();
 
+        if(!(newAlarm)) {
+            /*getSettings here*/
+            alarm = new Alarm(/**/);
+        }
+
+        /* TEST*/
+        alarm.setDays("0101011");
+        alarm.setVibration(true);
+        alarm.setActivity(4);
+        alarm.setVolume(40);
 
         /* Отобразить настройки на экране */
-        timePicker = (TextView)findViewById(R.id.timePickerLabel);
-        timePicker.setText(alarm.getTime().format("%H:%M"));
 
+        /* Time */
+        timePickerLabel = (TextView)findViewById(R.id.timePickerLabel);
+        timePickerLabel.setText(alarm.getTime().format("%R"));
+
+        /* Days */
+        String days = alarm.getDays();
+        if(days.charAt(0) == '1')
+            ((CheckBox)findViewById(R.id.checkBox1)).setChecked(true);
+        if(days.charAt(1) == '1')
+            ((CheckBox)findViewById(R.id.checkBox2)).setChecked(true);
+        if(days.charAt(2) == '1')
+            ((CheckBox)findViewById(R.id.checkBox3)).setChecked(true);
+        if(days.charAt(3) == '1')
+            ((CheckBox)findViewById(R.id.checkBox4)).setChecked(true);
+        if(days.charAt(4) == '1')
+            ((CheckBox)findViewById(R.id.checkBox5)).setChecked(true);
+        if(days.charAt(5) == '1')
+            ((CheckBox)findViewById(R.id.checkBox6)).setChecked(true);
+        if(days.charAt(6) == '1')
+            ((CheckBox)findViewById(R.id.checkBox7)).setChecked(true);
+
+        /* Volume */
+        ((SeekBar)findViewById(R.id.volume)).setProgress(alarm.getVolume());
+
+        /* Vibration */
+        ((Switch)findViewById(R.id.vibration)).setChecked(alarm.getVibration());
+
+        /* Signal */
         signal = (TextView)findViewById(R.id.signal);
         signal.setText(alarm.getSignal().toString());
 
+        /* Activity */
+        switch (alarm.getActivity()) {
+            case 0: ((RadioButton)findViewById(R.id.noActivity)).setChecked(true);
+                break;
+            case 1: ((RadioButton)findViewById(R.id.arithmetic)).setChecked(true);
+                break;
+            case 2: ((RadioButton)findViewById(R.id.shake)).setChecked(true);
+                break;
+            case 3: ((RadioButton)findViewById(R.id.choose)).setChecked(true);
+                break;
+            case 4: ((RadioButton)findViewById(R.id.phrase)).setChecked(true);
+        }
     }
 
     public void setTime(View view) {
-        final Calendar c = Calendar.getInstance();
-        int mHour = c.get(Calendar.HOUR_OF_DAY);
-        int mMinute = c.get(Calendar.MINUTE);
+        int mHour = alarm.getTime().hour;
+        int mMinute = alarm.getTime().minute;
 
         TimePickerDialog tpd = new TimePickerDialog(this,
                 new TimePickerDialog.OnTimeSetListener() {
@@ -84,16 +132,14 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay,
                                           int minute) {
-                        timePicker.setText(hourOfDay + ":" + minute);
+                        Time time = new Time();
+                        time.set(0, minute, hourOfDay, 0, 0, 0);
+                        timePickerLabel.setText(time.format("%R"));
+                        alarm.setTime(time);
                     }
-                }, mHour, mMinute, false);
+                }, mHour, mMinute, true);
+        tpd.setCancelable(true);
         tpd.show();
-
-        Time time = new Time();
-        time.set(0, mMinute, mHour, 0, 0, 0);
-
-        alarm.setTime(time);
-
     }
 
 
@@ -136,13 +182,11 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        // TODO Auto-generated method stub
     }
 
     public void setSignal(View view) {
