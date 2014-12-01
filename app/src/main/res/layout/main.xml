@@ -7,44 +7,60 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <AnalogClock
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/holo_green_light"
-        android:id="@+id/analogClock"/>
+        android:layout_height="match_parent"
+        android:id="@+id/scrollViewMain"
+        android:layout_gravity="center_horizontal" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/Alarms"
-        android:paddingTop="@dimen/paddingTop"
-        android:textSize="@dimen/bigTxtSize"
-        android:textStyle="bold"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/LLMainInScroll">
 
-    <View
-        android:id="@+id/OverLine"
-        android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:background="@drawable/dottedline"
-        android:layerType="software"/>
+            <AnalogClock
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_green_light"
+                android:id="@+id/analogClock"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Alarms"
+                android:paddingTop="@dimen/paddingTop"
+                android:textSize="@dimen/bigTxtSize"
+                android:textStyle="bold"/>
+
+            <View
+                android:id="@+id/OverLine"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/dottedline"
+                android:layerType="software"/>
 
     <!-- layerType потому что есть какой-то баг в атндроиде - линия не прерывистая
       нужно отключить хардовое ускорение-->
 
-    <TextView
-        android:id="@+id/tvAddNewAlarm"
-        android:drawableLeft="@drawable/addnew1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/addNewAlarm"
-        android:gravity="center_vertical"
-        android:textSize="@dimen/mediumTxtSize"/>
+            <TextView
+                android:id="@+id/tvAddNewAlarm"
+                android:drawableLeft="@drawable/addnew1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/addNewAlarm"
+                android:gravity="center_vertical"
+                android:textSize="@dimen/mediumTxtSize"/>
 
-    <View
-        android:id="@+id/UnderLine"
-        android:layout_width="fill_parent"
-        android:layout_height="10dp"
-        android:background="@drawable/dottedline"
-        android:layerType="software"/>
+            <View
+                android:id="@+id/UnderLine"
+                android:layout_width="fill_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/dottedline"
+                android:layerType="software"/>
+
+         </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
