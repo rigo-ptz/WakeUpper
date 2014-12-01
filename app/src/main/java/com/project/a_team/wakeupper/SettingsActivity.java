@@ -3,9 +3,7 @@ package com.project.a_team.wakeupper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.DialogFragment;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -16,14 +14,12 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import java.io.File;
 import java.util.Calendar;
 
 public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
@@ -40,7 +36,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
         Intent intent = getIntent();
         String aID = intent.getStringExtra(MainActivity.alarmID);
-        if(aID.equals("1")) {
+        if(aID.equals("-1")) {
             Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show();
         }
 

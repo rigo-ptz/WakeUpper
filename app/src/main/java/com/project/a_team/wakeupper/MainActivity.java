@@ -8,14 +8,11 @@ package com.project.a_team.wakeupper;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Contacts;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-
-import com.project.a_team.wakeupper.activities.ArithmeticActivity;
 
 
 public class MainActivity extends Activity implements OnClickListener {
@@ -63,7 +60,7 @@ public class MainActivity extends Activity implements OnClickListener {
                 Intent intent = new Intent(this, SettingsActivity.class);
 
                 // TEST
-                intent.putExtra(alarmID, "1");
+                intent.putExtra(alarmID, "-1");
 
                 // Testing ArithmeticActivity
                 //Intent intent = new Intent(this, ArithmeticActivity.class);
