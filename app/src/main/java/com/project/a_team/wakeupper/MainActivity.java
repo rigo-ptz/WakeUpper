@@ -80,11 +80,19 @@ public class MainActivity extends Activity implements OnClickListener {
                 //Intent intent = new Intent(this, ArithmeticActivity.class);
 
                 startActivity(intent);
+
+                /*// подключаемся к БД
+                try {
+                    SQLiteDatabase db = dbHelper.getWritableDatabase();
+                } catch (Exception ex) {
+                    Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+                }
+                // закрываем подключение к БД
+                dbHelper.close();*/
+
                 break;
             default:
                 break;
         }
     }
-
-
 }

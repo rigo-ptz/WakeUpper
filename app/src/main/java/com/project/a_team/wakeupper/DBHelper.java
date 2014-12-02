@@ -35,14 +35,14 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "--- onCreate database ---");
         // создаем таблицу с полями
-        db.execSQL("CREATE TABLE" + TABLE_NAME + "(" + ID + "integer PRIMARY KEY," +
-                STATE + "integer," +
-                DAYS + "text," +
-                TIME + "integer," +
-                SIGNAL + "text," +
-                VIBRATION +  "integer," +
-                VOLUME + "integer," +
-                ACTIV + "integer);");
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID + " integer PRIMARY KEY," +
+                STATE + " integer," +
+                DAYS + " text," +
+                TIME + " integer," +
+                SIGNAL + " text," +
+                VIBRATION +  " integer," +
+                VOLUME + " integer," +
+                ACTIV + " integer);");
     }
 
     @Override
