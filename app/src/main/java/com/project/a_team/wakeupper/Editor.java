@@ -1,42 +1,19 @@
 package com.project.a_team.wakeupper;
 
 import android.content.ContentValues;
+import android.database.DatabaseErrorHandler;
+import android.database.DefaultDatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 
 /**
  * Created by ef on 02.12.2014.
  */
 public class Editor {
-    private static SQLiteDatabase openDB() {
-        //SQLiteDatabase.openDatabase()
-
-    }
-
-
     public static Boolean createAlarm(Alarm alarm) {
-        SQLiteDatabase db = openDB();
-
-        db.beginTransaction();
-        try {
-            ContentValues values = new ContentValues();
-            //intState
-            //txtDays
-            //intTime
-            //txtSignal
-            //intVibration
-            //intVolume
-            //intActivity
-            values.put(MainActivity.DBHelper.STATE, Integer.valueOf(1));
 
 
-
-            db.insertOrThrow(MainActivity.DBHelper.TABLE_NAME, "", values);
-
-            db.setTransactionSuccessful();
-        } finally {
-            db.endTransaction();
-        }
-
+        //TODO системный планировщик
+        //TODO return false при ошибке или если все плохо
         return true;
     }
 
@@ -50,4 +27,29 @@ public class Editor {
 
     }
 
+    private static ContentValues putValues(Alarm alarm) {
+        ContentValues values = new ContentValues();
+        //intState
+        if(alarm.getState())
+            values.put(DBHelper.STATE, 1);
+        else
+            values.put(DBHelper.STATE, 0);
+        //txtDays
+        values.put(DBHelper.DAYS, alarm.getDays());
+        //intTime
+        values.put(DBHelper.TIME, alarm.getTime().toMillis(false));
+        //txtSignal
+        values.put(DBHelper.SIGNAL, alarm.getSignal().toString());
+        //intVibration
+        if(alarm.getVibration())
+            values.put(DBHelper.VIBRATION, 1);
+        else
+            values.put(DBHelper.VIBRATION, 0);
+        //intVolume
+        values.put(DBHelper.VOLUME, alarm.getVolume());
+        //intActivity
+        values.put(DBHelper.ACTIV, alarm.getActivity());
+
+        return values;
+    }
 }
