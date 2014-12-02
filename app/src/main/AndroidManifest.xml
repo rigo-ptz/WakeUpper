@@ -2,8 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.a_team.wakeupper" >
 
-    <uses-permission
-        android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -11,7 +10,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="com.project.a_team.wakeupper.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".SettingsActivity"
+            android:name="com.project.a_team.wakeupper.SettingsActivity"
             android:label="@string/settingsManifestLabel" >
             <intent-filter>
                 <action android:name="com.project.a_team.wakeupper.intent.action.SETTINGS" />
@@ -29,9 +27,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".activities.ShakeActivity"
+            android:name="com.project.a_team.wakeupper.activities.ShakeActivity"
             android:label="@string/shakeManifestLabel" >
             <intent-filter>
                 <action android:name="com.project.a_team.wakeupper.intent.action.SHAKE" />
@@ -39,10 +36,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name=".activities.ArithmeticActivity"
+            android:name="com.project.a_team.wakeupper.activities.ArithmeticActivity"
             android:label="@string/arithmeticManifestLabel" >
+        </activity>
+        <activity
+            android:name="com.project.a_team.wakeupper.activities.ChooseActivity"
+            android:label="@string/title_activity_choose" >
         </activity>
     </application>
 
