@@ -9,18 +9,21 @@
     <string name="hello_world">Azaza</string>
     <string name="action_settings">Settings</string>
 
+    <!-- For Activities. Created by kanphis on 02.12.14 -->
+    <string name="checkAnswer">Проверить</string>
+    <string name="correctAnswer">Правильно!</string>
+
     <!-- For Arithmetic -->
     <string name="stringOK">OK</string>
     <string name="taskLabel">Решите пример:</string>
     <string name="alertTitle">Результат</string>
-    <string name="checkAnswer">Проверить</string>
     <string name="enterAnswer">Введите ответ</string>
     <string name="incorrectTryAgain">Неправильно! Решите новый пример</string>
-    <string name="correctAnswer">Правильно!</string>
 
     <!-- For Shake. Created by Yamushev Igor on 15.11.14 -->
     <string name="instruction">Потряси меня \n и заполни \n прогресс-бар</string>
     <string name="imgAbout">Shaker Image</string>
+    <string name="kurosava">Красава!</string>
 
     <!-- For Choose. Created by kanphis on 02.12.14 -->
     <string name="choose_description">Выберите числа кратные </string>

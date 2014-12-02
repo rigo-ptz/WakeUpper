@@ -127,7 +127,7 @@ public class ShakeActivity extends Activity implements SensorEventListener {
                     * setResult(RESULT_OK, intent);
                     * finish();
                     * */
-            Toast.makeText(this, "Красава!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.kurosava, Toast.LENGTH_SHORT).show();
             onPause();
             vibro.cancel();
         }
