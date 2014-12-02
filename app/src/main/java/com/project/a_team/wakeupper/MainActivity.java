@@ -6,12 +6,8 @@ package com.project.a_team.wakeupper;
 */
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -90,39 +86,5 @@ public class MainActivity extends Activity implements OnClickListener {
         }
     }
 
-    class DBHelper extends SQLiteOpenHelper {
 
-        public static final String DBNAME = "WakeUpperDB";
-        public static final String TABLE_NAME = "tblAlarmSettings";
-        public static final String ID = "intId ";
-        public static final String STATE = "intState";
-        public static final String DAYS = "txtDays";
-        public static final String TIME = "intTime";
-        public static final String SIGNAL = "txtSignal";
-        public static final String VIBRATION= "intVibration";
-        public static final String VOLUME = "intVolume";
-        public static final String ACTIV = "intActivity";
-
-        public DBHelper(Context context) {
-            // конструктор суперкласса
-            super(context, DBNAME, null, 1);
-        }
-
-        @Override
-        public void onCreate(SQLiteDatabase db) {
-            Log.d(LOG_TAG, "--- onCreate database ---");
-            // создаем таблицу с полями
-            db.execSQL("create table" + TABLE_NAME + "(intId integer primary key," +
-                       "boolState integer," +
-                       "txtDays text," +
-                       "boolVibration integer," +
-                       "intVolume integer," +
-                       "intActivity intger);");
-        }
-
-        @Override
-        public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        }
-    }
 }
