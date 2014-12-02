@@ -26,19 +26,19 @@
                 android:id="@+id/layout3">
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/buttonCancel"
                     android:id="@+id/cancelButton"
-                    android:layout_weight="0.29"
+                    android:layout_weight="0.5"
                     android:onClick="onCancelButtonClick" />
 
                 <Button
-                    android:layout_width="0dp"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/buttonSave"
                     android:id="@+id/confirmButton"
-                    android:layout_weight="0.67"
+                    android:layout_weight="0.5"
                     android:onClick="onConfirmButtonClick" />
             </LinearLayout>
 
@@ -65,88 +65,78 @@
                 android:text="@string/daysLabel"
                 android:id="@+id/daysLabel" />
 
-            <RelativeLayout
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></TableRow>
+
+            <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/layout4">
+                android:layout_height="68dp">
 
                 <CheckBox
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/daysMn"
                     android:id="@+id/checkBox1"
                     android:checked="false"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:onClick="setDays" />
+                    android:onClick="setDays"
+                    android:layout_weight="0.142" />
 
                 <CheckBox
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/daysTu"
                     android:id="@+id/checkBox2"
                     android:checked="false"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox1"
-                    android:layout_toEndOf="@+id/checkBox1"
-                    android:onClick="setDays" />
+                    android:onClick="setDays"
+                    android:layout_weight="0.142" />
 
                 <CheckBox
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/daysWe"
                     android:id="@+id/checkBox3"
                     android:checked="false"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox2"
-                    android:layout_toEndOf="@+id/checkBox2"
-                    android:onClick="setDays" />
+                    android:onClick="setDays"
+                    android:layout_weight="0.142" />
 
                 <CheckBox
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/daysTh"
                     android:id="@+id/checkBox4"
                     android:checked="false"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox3"
-                    android:layout_toEndOf="@+id/checkBox3"
-                    android:onClick="setDays" />
+                    android:onClick="setDays"
+                    android:layout_weight="0.142" />
 
                 <CheckBox
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/daysFr"
                     android:id="@+id/checkBox5"
                     android:checked="false"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox4"
-                    android:layout_toEndOf="@+id/checkBox4"
-                    android:onClick="setDays" />
+                    android:onClick="setDays"
+                    android:layout_weight="0.142" />
 
                 <CheckBox
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/daysSa"
                     android:id="@+id/checkBox6"
                     android:checked="false"
-                    android:layout_toEndOf="@+id/checkBox3"
                     android:onClick="setDays"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox5" />
+                    android:layout_weight="0.142" />
 
                 <CheckBox
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dip"
                     android:layout_height="wrap_content"
                     android:text="@string/daysSu"
                     android:id="@+id/checkBox7"
                     android:checked="false"
                     android:onClick="setDays"
-                    android:layout_alignParentTop="true"
-                    android:layout_toRightOf="@+id/checkBox6" />
-            </RelativeLayout>
+                    android:layout_weight="0.142" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

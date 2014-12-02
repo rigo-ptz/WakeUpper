@@ -95,9 +95,11 @@ public class MainActivity extends Activity implements OnClickListener {
         public static final String DBNAME = "WakeUpperDB";
         public static final String TABLE_NAME = "tblAlarmSettings";
         public static final String ID = "intId ";
-        public static final String STATE = "boolState";
+        public static final String STATE = "intState";
         public static final String DAYS = "txtDays";
-        public static final String VIBRATION= "boolVibration";
+        public static final String TIME = "intTime";
+        public static final String SIGNAL = "txtSignal";
+        public static final String VIBRATION= "intVibration";
         public static final String VOLUME = "intVolume";
         public static final String ACTIV = "intActivity";
 
