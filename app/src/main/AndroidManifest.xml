@@ -43,6 +43,11 @@
         <activity
             android:name="com.project.a_team.wakeupper.activities.ChooseActivity"
             android:label="@string/title_activity_choose" >
+            <intent-filter>
+                <action android:name="com.project.a_team.wakeupper.intent.action.CHOOSE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
     </application>
 

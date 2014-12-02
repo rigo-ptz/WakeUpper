@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView2"
+        android:id="@+id/chooseDesc"
         android:text="@string/choose_description"
         android:layout_gravity="center_horizontal" />
 
@@ -28,7 +28,9 @@
             android:text="string"
             android:id="@+id/intView1"
             android:layout_margin="6dp"
-            android:onClick="highlightView" />
+            android:onClick="highlightView"
+            android:clickable="true"
+            android:background="@color/backgroundColor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -37,7 +39,9 @@
             android:text="string"
             android:id="@+id/intView2"
             android:layout_margin="6dp"
-            android:onClick="highlightView" />
+            android:onClick="highlightView"
+            android:clickable="true"
+            android:background="@color/backgroundColor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,7 +50,9 @@
             android:text="string"
             android:id="@+id/intView3"
             android:layout_margin="6dp"
-            android:onClick="highlightView" />
+            android:onClick="highlightView"
+            android:clickable="true"
+            android:background="@color/backgroundColor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,7 +61,9 @@
             android:text="string"
             android:id="@+id/intView4"
             android:layout_margin="6dp"
-            android:onClick="highlightView" />
+            android:onClick="highlightView"
+            android:clickable="true"
+            android:background="@color/backgroundColor" />
     </LinearLayout>
 
     <LinearLayout
@@ -71,7 +79,9 @@
             android:text="string"
             android:id="@+id/intView5"
             android:layout_margin="6dp"
-            android:onClick="highlightView" />
+            android:onClick="highlightView"
+            android:clickable="true"
+            android:background="@color/backgroundColor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -80,7 +90,9 @@
             android:text="string"
             android:id="@+id/intView6"
             android:layout_margin="6dp"
-            android:onClick="highlightView" />
+            android:onClick="highlightView"
+            android:clickable="true"
+            android:background="@color/backgroundColor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -89,7 +101,9 @@
             android:text="string"
             android:id="@+id/intView7"
             android:layout_margin="6dp"
-            android:onClick="highlightView" />
+            android:onClick="highlightView"
+            android:clickable="true"
+            android:background="@color/backgroundColor" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -98,7 +112,9 @@
             android:text="string"
             android:id="@+id/intView8"
             android:layout_margin="6dp"
-            android:onClick="highlightView" />
+            android:onClick="highlightView"
+            android:clickable="true"
+            android:background="@color/backgroundColor" />
     </LinearLayout>
 
     <Button

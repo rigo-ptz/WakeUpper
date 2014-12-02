@@ -12,6 +12,7 @@
     <!-- For Activities. Created by kanphis on 02.12.14 -->
     <string name="checkAnswer">Проверить</string>
     <string name="correctAnswer">Правильно!</string>
+    <string name="kurosawa">Красава!</string>
 
     <!-- For Arithmetic -->
     <string name="stringOK">OK</string>
@@ -23,10 +24,10 @@
     <!-- For Shake. Created by Yamushev Igor on 15.11.14 -->
     <string name="instruction">Потряси меня \n и заполни \n прогресс-бар</string>
     <string name="imgAbout">Shaker Image</string>
-    <string name="kurosawa">Красава!</string>
 
     <!-- For Choose. Created by kanphis on 02.12.14 -->
-    <string name="choose_description">Выберите числа кратные </string>
+    <string name="choose_description">Выберите числа кратные</string>
+    <string name="tryTryAgain">Неправильно! Попробуйте еще раз</string>
 
     <!-- For Main. Created by Yamushev Igor on 16.11.14 -->
     <string name="Alarms"> Будильники: </string>
