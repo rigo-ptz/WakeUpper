@@ -23,6 +23,8 @@ public class Editor {
             long rowID = db.insert(DBHelper.TABLE_NAME, null, values);
             Log.d(LOG_TAG, "row inserted, ID = " + rowID);
 
+            dbHelper.close();
+
             //TODO системный планировщик
         } catch (Exception ex) {
             Log.d(LOG_TAG, "--- Editor, createAlarm() ---");
@@ -45,6 +47,8 @@ public class Editor {
                     new String[] { alarm.getID().toString() });
             Log.d(LOG_TAG, "updated rows count = " + updCount);
 
+            dbHelper.close();
+
             //TODO системный планировщик
         } catch (Exception ex) {
             Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
@@ -61,6 +65,8 @@ public class Editor {
 
             int delCount = db.delete(DBHelper.TABLE_NAME, "intId = " + alarmID.toString(), null);
             Log.d(LOG_TAG, "deleted rows count = " + delCount);
+
+            dbHelper.close();
 
             //TODO системный планировщик
         } catch (Exception ex) {
@@ -85,6 +91,8 @@ public class Editor {
             int updCount = db.update(DBHelper.TABLE_NAME, newState,
                     "intId = " + alarmID.toString(), null);
             Log.d(LOG_TAG, "updated rows count = " + updCount);
+
+            dbHelper.close();
 
             //TODO системный планировщик
         } catch (Exception ex) {
