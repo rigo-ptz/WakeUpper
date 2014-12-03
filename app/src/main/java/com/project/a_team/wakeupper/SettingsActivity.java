@@ -3,10 +3,13 @@ package com.project.a_team.wakeupper;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.Time;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -14,6 +17,7 @@ import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChangeListener{
@@ -47,10 +51,10 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         vibro.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(buttonView.isChecked()) {
-                    alarm.setVibration(1);
+                    alarm.setVibration(true);
                 }
                 else {
-                    alarm.setVibration(0);
+                    alarm.setVibration(false);
                 }
             }
         });
@@ -64,7 +68,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
         /* TEST*/
         alarm.setDays("0101011");
-        alarm.setVibration(1);
+        alarm.setVibration(true);
         alarm.setActivity(4);
         alarm.setVolume(40);
 
@@ -72,7 +76,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
         /* Time */
         timePickerLabel = (TextView)findViewById(R.id.timePickerLabel);
-    //    timePickerLabel.setText(alarm.getTime().format("%R")); TODO как-то продумать время и перевод
+        timePickerLabel.setText(alarm.getTime().format("%R"));
 
         /* Days */
         String days = alarm.getDays();
@@ -95,7 +99,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         ((SeekBar)findViewById(R.id.volume)).setProgress(alarm.getVolume());
 
         /* Vibration */
-       // ((Switch)findViewById(R.id.vibration)).setChecked(alarm.getVibration()); TODO переход от цифр к булеан
+        ((Switch)findViewById(R.id.vibration)).setChecked(alarm.getVibration());
 
         /* Signal */
         signal = (TextView)findViewById(R.id.signal);
@@ -115,7 +119,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         }
     }
 
- /*   public void setTime(View view) { TODO как-то продумать время и перевод
+    public void setTime(View view) {
         int mHour = alarm.getTime().hour;
         int mMinute = alarm.getTime().minute;
 
@@ -133,7 +137,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                 }, mHour, mMinute, true);
         tpd.setCancelable(true);
         tpd.show();
-    }*/
+    }
 
 
     public void setDays(View view) {
@@ -190,8 +194,8 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         startActivityForResult(intent , 1);
     }
 
-  /*  @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {  TODO приведение строки к URI
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (resultCode == RESULT_OK) {
             switch (requestCode) {
                 case 1:
@@ -204,7 +208,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                     break;
             }
         }
-    }*/
+    }
 
 
     public void setActivity(View view) {

@@ -2,6 +2,8 @@ package com.project.a_team.wakeupper;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.text.format.Time;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -61,12 +63,15 @@ public class DataProvider{
                 int volumeFromDB = c.getInt(volumeColIndex);
                 int activFromDB = c.getInt(activColIndex);
 
+                Time myTime = new Time();
+                myTime.set(timeFromDB); // если что переписать ручной перевод времени
+
                 alarm.setID(idFromDB);
-                alarm.setState(stateFromDB);
+                alarm.setState(toBoolean(stateFromDB));
                 alarm.setDays(daysFromDB);
-                alarm.setTime(timeFromDB);
-                alarm.setSignal(signalFromDB);
-                alarm.setVibration(vibroFromDB);
+                alarm.setTime(myTime);
+                alarm.setSignal(Uri.parse(signalFromDB)); // ?
+                alarm.setVibration(toBoolean(vibroFromDB));
                 alarm.setVolume(volumeFromDB);
                 alarm.setActivity(activFromDB);
             } while (c.moveToNext());
@@ -81,6 +86,12 @@ public class DataProvider{
         dbHelper.close();
 
         return alarm;
+    }
+
+    private Boolean toBoolean(int x) {
+        Boolean res;
+        res = x == 1;
+        return res;
     }
 
     public List getIDs() {
