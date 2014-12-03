@@ -28,18 +28,18 @@ public class Editor {
     private static ContentValues putValues(Alarm alarm) {
         ContentValues values = new ContentValues();
         //intState
-        if(alarm.getState() == 1)
+        if(alarm.getState())
             values.put(DBHelper.STATE, 1);
         else
             values.put(DBHelper.STATE, 0);
         //txtDays
         values.put(DBHelper.DAYS, alarm.getDays());
         //intTime
-       // values.put(DBHelper.TIME, alarm.getTime().toMillis(false)); TODO продумать перевод для времени и вытыщить в отдельные функциии
+        values.put(DBHelper.TIME, alarm.getTime().toMillis(false));
         //txtSignal
         values.put(DBHelper.SIGNAL, alarm.getSignal().toString());
         //intVibration
-        if(alarm.getVibration() == 1)
+        if(alarm.getVibration())
             values.put(DBHelper.VIBRATION, 1);
         else
             values.put(DBHelper.VIBRATION, 0);
