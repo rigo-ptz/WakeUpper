@@ -268,7 +268,8 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        /* EDITOR HERE */
+                        /* TODO Editor.createAlarm */
+                        /* TODO Editor.updateAlarm */
                         finish();
                     }
                 });
