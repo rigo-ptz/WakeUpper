@@ -1,35 +1,32 @@
 package com.project.a_team.wakeupper;
 
-import android.media.RingtoneManager;
-import android.net.Uri;
-import android.text.format.Time;
-
 /**
  * Created by ef on 30.11.2014.
  */
 public class Alarm {
     private Integer ID;
-    private Boolean state;
-    private Time time;
+    private int state;
+    private int time;
     private String days;
-    private Uri signal;
-    private Boolean vibration;
+    private String signal;
+    private int vibration;
     private Integer volume;
     private Integer activity;
 
     public Alarm() {
         ID = -1;
-        state = true;
-        time = new Time();
+        state = 1;
+        //time = new Time();  TODO написать перевод времени
+        time = 0;
         days = "0000000";
-        signal = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
-        vibration = false;
+        //signal = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE); TODO привести это к строке, и обратно
+        vibration = 0;
         volume = 0;
         activity = 0;
     }
 
-    public Alarm(Integer aID, Boolean aState, Time aTime, String aDays, Uri aSignal,
-                 Boolean aVibration, Integer aVolume, Integer aActivity) {
+    public Alarm(Integer aID, int aState, int aTime, String aDays, String aSignal,
+                 int aVibration, Integer aVolume, Integer aActivity) {
         ID = aID;
         state = aState;
         time = aTime;
@@ -44,11 +41,11 @@ public class Alarm {
         return ID;
     }
 
-    public Boolean getState(){
+    public int getState(){
         return state;
     }
 
-    public Time getTime(){
+    public int getTime(){
         return time;
     }
 
@@ -56,11 +53,11 @@ public class Alarm {
         return days;
     }
 
-    public Uri getSignal(){
+    public String getSignal(){
         return signal;
     }
 
-    public Boolean getVibration(){
+    public int getVibration(){
         return vibration;
     }
 
@@ -72,11 +69,14 @@ public class Alarm {
         return activity;
     }
 
-    public void setState(Boolean aState) {
+    // Yamushev Igor 03.12.14
+    public void setID(Integer ID) { this.ID = ID; }
+
+    public void setState(int aState) {
         state = aState;
     }
 
-    public void setTime(Time aTime) {
+    public void setTime(int aTime) {
         time = aTime;
     }
 
@@ -84,11 +84,11 @@ public class Alarm {
         days = aDays;
     }
 
-    public void setSignal(Uri aSignal) {
+    public void setSignal(String aSignal) {
         signal = aSignal;
     }
 
-    public void setVibration(Boolean aVibration) {
+    public void setVibration(int aVibration) {
         vibration = aVibration;
     }
 
