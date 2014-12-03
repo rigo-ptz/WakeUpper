@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME = "WakeUpperDB";
     public static final String TABLE_NAME = "tblAlarmSettings";
-    public static final String ID = "intId ";
+    public static final String ID = "_intId ";
     public static final String STATE = "intState";
     public static final String DAYS = "txtDays";
     public static final String TIME = "intTime";
@@ -25,10 +25,12 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String VIBRATION = "intVibration";
     public static final String VOLUME = "intVolume";
     public static final String ACTIV = "intActivity";
+    public static Context myContext;
 
     public DBHelper(Context context) {
         // конструктор суперкласса
         super(context, DBNAME, null, 1);
+        myContext = context;
     }
 
     @Override
