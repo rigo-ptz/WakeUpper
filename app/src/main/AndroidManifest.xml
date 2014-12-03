@@ -49,6 +49,10 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.project.a_team.wakeupper.UnblockActivity"
+            android:label="@string/title_activity_unblock" >
+        </activity>
     </application>
 
 </manifest>

@@ -63,5 +63,6 @@
     <!-- For UnblockActivity -->
     <string name="unblock">Отключить</string>
     <string name="title_activity_choose">Choose</string>
+    <string name="title_activity_unblock">Unblock</string>
 
 </resources>
