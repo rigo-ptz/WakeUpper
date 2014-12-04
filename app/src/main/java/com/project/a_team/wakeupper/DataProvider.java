@@ -20,11 +20,13 @@ public abstract class DataProvider{
     static DBHelper dbHelper = new DBHelper(DBHelper.myContext);
     static SQLiteDatabase db;
 
-    // можно и сразу все конструктору отдать
-    static Alarm alarm = new Alarm();
+
 
     // TODO static method please . FIX
     public static Alarm getSettings(Integer alarmID) {
+
+        // можно и сразу все конструктору отдать внизу, а можно и сеттерами
+        Alarm alarm = new Alarm();
 
         // подключаемся к БД
         try {
