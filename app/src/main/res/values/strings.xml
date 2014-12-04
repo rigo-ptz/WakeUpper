@@ -66,4 +66,7 @@
     <string name="title_activity_choose">Choose</string>
     <string name="title_activity_unblock">Unblock</string>
 
+    <!-- For DataProvider. Created by Yamushev Igor on 04.12.14 -->
+    <string name="noSuchIDError">К сожалению произошла ошибка такого
+                 будильника нет в базе. Пожалуйста, создайте новый</string>
 </resources>

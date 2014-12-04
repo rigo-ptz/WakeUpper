@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME = "WakeUpperDB";
     public static final String TABLE_NAME = "tblAlarmSettings";
-    public static final String ID = "_intId ";
+    public static final String ID = "_intId";
     public static final String STATE = "intState";
     public static final String DAYS = "txtDays";
     public static final String TIME = "intTime";

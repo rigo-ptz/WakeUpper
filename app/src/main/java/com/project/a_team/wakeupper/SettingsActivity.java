@@ -34,8 +34,12 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
+        //посылаем в дата контекст для тоста. не удалять, иначе тост не покажется при ошибке
+        DataProvider.setContext(this);
+
         Intent intent = getIntent();
-        String aID = intent.getStringExtra(MainActivity.alarmID);
+        //String aID = intent.getStringExtra(MainActivity.alarmID);
+        String aID = "1";
         newAlarm = aID.equals("-1");
             //Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
 

@@ -1,10 +1,12 @@
 package com.project.a_team.wakeupper;
 
+import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.text.format.Time;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,7 @@ public abstract class DataProvider{
 
     static DBHelper dbHelper = new DBHelper(DBHelper.myContext);
     static SQLiteDatabase db;
-
+    static Context myContext;
 
 
     // TODO static method please . FIX
@@ -37,10 +39,18 @@ public abstract class DataProvider{
         }
 
         // --- ДЕЛАЕМ ЗАПРОС ---
-        Cursor c = db.query(DBHelper.TABLE_NAME, new String[] {DBHelper.ID, DBHelper.STATE, DBHelper.DAYS,
-                                                               DBHelper.TIME, DBHelper.SIGNAL, DBHelper.VIBRATION,
-                                                               DBHelper.VOLUME, DBHelper.ACTIV},
-                            DBHelper.ID + " = " + alarmID.toString(), null, null, null, null);
+        Cursor c = null;
+        try {
+            c = db.query(DBHelper.TABLE_NAME, new String[] {DBHelper.ID, DBHelper.STATE, DBHelper.DAYS,
+                                                                   DBHelper.TIME, DBHelper.SIGNAL, DBHelper.VIBRATION,
+                                                                   DBHelper.VOLUME, DBHelper.ACTIV},
+                                DBHelper.ID + " = " + alarmID.toString(), null, null, null, null);
+        } catch (Exception ex) {
+            Log.d(LOG_TAG, "--- DataProvider, getSettings, WRONG ID ---");
+            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+            Toast.makeText(myContext,R.string.noSuchIDError, Toast.LENGTH_LONG).show();
+            return alarm;
+        }
 
         // ставим позицию курсора на первую строку выборки
         // если в выборке нет строк, вернется false
@@ -145,5 +155,9 @@ public abstract class DataProvider{
         dbHelper.close();
 
         return IDList;
+    }
+
+    public static void setContext(Context context) {
+        myContext = context;
     }
 }
