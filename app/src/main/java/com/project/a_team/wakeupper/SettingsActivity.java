@@ -36,7 +36,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         String aID = intent.getStringExtra(MainActivity.alarmID);
         if(aID.equals("-1")) {
             newAlarm = true;
-            Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
         } else
             newAlarm = false;
 
@@ -62,7 +62,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         alarm = new Alarm();
 
         if(!(newAlarm)) {
-            /*getSettings here*/
+            /* TODO getSettings() */
             alarm = new Alarm(/**/);
         }
 
@@ -173,7 +173,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
-        // CHANGE TO ACTUAL VOLUME
+        // TODO CHANGE TO ACTUAL VOLUME
         alarm.setVolume(progress);
     }
 
@@ -268,9 +268,17 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int id) {
-                        /* TODO Editor.createAlarm */
-                        /* TODO Editor.updateAlarm */
-                        finish();
+                        if(newAlarm) {
+                            if(!(Editor.createAlarm(alarm))) {
+                                Toast.makeText(getApplicationContext(),
+                                        R.string.errorOnCreateAlarm, Toast.LENGTH_SHORT).show();
+                            } else {
+                                finish();
+                            }
+                        } else {
+                            Editor.updateAlarm(alarm);
+                            finish();
+                        }
                     }
                 });
 

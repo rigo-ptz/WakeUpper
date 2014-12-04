@@ -43,8 +43,8 @@ public class Editor {
 
             ContentValues values = new ContentValues(putValues(alarm));
 
-            int updCount = db.update(DBHelper.TABLE_NAME, values, "intId = ?",
-                    new String[] { alarm.getID().toString() });
+            int updCount = db.update(DBHelper.TABLE_NAME, values,
+                    DBHelper.ID + " = " + alarm.getID().toString(), null);
             Log.d(LOG_TAG, "updated rows count = " + updCount);
 
             dbHelper.close();
@@ -63,7 +63,8 @@ public class Editor {
         try {
             db = dbHelper.getWritableDatabase();
 
-            int delCount = db.delete(DBHelper.TABLE_NAME, "intId = " + alarmID.toString(), null);
+            int delCount = db.delete(DBHelper.TABLE_NAME,
+                    DBHelper.ID + " = " + alarmID.toString(), null);
             Log.d(LOG_TAG, "deleted rows count = " + delCount);
 
             dbHelper.close();
@@ -89,7 +90,7 @@ public class Editor {
                 newState.put(DBHelper.STATE, 0);
 
             int updCount = db.update(DBHelper.TABLE_NAME, newState,
-                    "intId = " + alarmID.toString(), null);
+                    DBHelper.ID + " = " + alarmID.toString(), null);
             Log.d(LOG_TAG, "updated rows count = " + updCount);
 
             dbHelper.close();

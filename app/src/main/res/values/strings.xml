@@ -59,6 +59,7 @@
     <string name="activityPhrase">Ввод по образцу</string>
     <string name="activityNoActivity">Без Активности</string>
     <string name="vibrationLabel">Вибрация:</string>
+    <string name="errorOnCreateAlarm">Не удалось создать будильник</string>
 
     <!-- For UnblockActivity -->
     <string name="unblock">Отключить</string>
