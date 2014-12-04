@@ -23,6 +23,7 @@ public class DataProvider{
     // можно и сразу все конструктору отдать
     Alarm alarm = new Alarm();
 
+    // TODO static metod please
     public Alarm getSettings(Integer alarmID) {
 
         // подключаемся к БД
