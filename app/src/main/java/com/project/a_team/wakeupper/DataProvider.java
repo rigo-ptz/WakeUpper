@@ -13,18 +13,18 @@ import java.util.List;
 *   created by Yamushev Igor on 03.12.14
 *   PetrSU, TPPO 2014. 22305 group
 */
-public class DataProvider{
+public abstract class DataProvider{
 
-    final String LOG_TAG = "myLogs";
+    final static String LOG_TAG = "myLogs";
 
-    DBHelper dbHelper = new DBHelper(DBHelper.myContext);
-    SQLiteDatabase db;
+    static DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+    static SQLiteDatabase db;
 
     // можно и сразу все конструктору отдать
-    Alarm alarm = new Alarm();
+    static Alarm alarm = new Alarm();
 
-    // TODO static metod please
-    public Alarm getSettings(Integer alarmID) {
+    // TODO static method please . FIX
+    public static Alarm getSettings(Integer alarmID) {
 
         // подключаемся к БД
         try {
@@ -89,13 +89,13 @@ public class DataProvider{
         return alarm;
     }
 
-    private Boolean toBoolean(int x) {
+    private static Boolean toBoolean(int x) {
         Boolean res;
         res = x == 1;
         return res;
     }
 
-    public List getIDs() {
+    public static List getIDs() {
         // массив заполненный ИД
         List<Integer> IDList = new ArrayList<Integer>();
 
