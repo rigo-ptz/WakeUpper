@@ -4,8 +4,10 @@ package com.project.a_team.wakeupper;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.AudioManager;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,7 +27,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
     private Alarm alarm;
     private Boolean newAlarm;
     private TextView timePickerLabel;
-    private TextView signal;
+    private TextView signalTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +40,16 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             //Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
 
         /* Слушатели */
-        final SeekBar seekbar = (SeekBar)findViewById(R.id.volume);
-        seekbar.setOnSeekBarChangeListener(this);
+        SeekBar volumeSeekBar = (SeekBar)findViewById(R.id.volume);
+        volumeSeekBar.setOnSeekBarChangeListener(this);
 
-        Switch vibro = (Switch)findViewById(R.id.vibration);
+        Switch vibrationSwitch = (Switch)findViewById(R.id.vibration);
 
-        vibro.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        vibrationSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(buttonView.isChecked()) {
+                if (buttonView.isChecked()) {
                     alarm.setVibration(true);
-                }
-                else {
+                } else {
                     alarm.setVibration(false);
                 }
             }
@@ -84,14 +85,17 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             ((CheckBox)findViewById(R.id.checkBox7)).setChecked(true);
 
         /* Volume */
-        ((SeekBar)findViewById(R.id.volume)).setProgress(alarm.getVolume());
+        volumeSeekBar.setProgress(alarm.getVolume());
+        AudioManager audioManager =
+                (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+        volumeSeekBar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM));
 
         /* Vibration */
         ((Switch)findViewById(R.id.vibration)).setChecked(alarm.getVibration());
 
         /* Signal */
-        signal = (TextView)findViewById(R.id.signal);
-        signal.setText(alarm.getSignal().toString());
+        signalTextView = (TextView)findViewById(R.id.signal);
+        signalTextView.setText(alarm.getSignal().toString());
 
         /* Activity */
         switch (alarm.getActivity()) {
@@ -155,13 +159,11 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             days.setCharAt(6, '1');
 
         alarm.setDays(days.toString());
-        Toast.makeText(this, days.toString(), Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
-        // TODO CHANGE TO ACTUAL VOLUME
         alarm.setVolume(progress);
     }
 
@@ -173,7 +175,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
     public void onStopTrackingTouch(SeekBar seekBar) {
     }
 
-    public void setSignal(View view) {
+    public void setSignalTextView(View view) {
         Intent intent=new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_RINGTONE);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, alarm.getSignal());
@@ -188,7 +190,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                 case 1:
                     Uri ringtone = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
                     alarm.setSignal(ringtone);
-                    signal.setText(ringtone.toString());
+                    signalTextView.setText(ringtone.toString());
                     break;
 
                 default:
@@ -218,7 +220,6 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             activity = 4;
 
         alarm.setActivity(activity);
-        Toast.makeText(this, activity.toString(), Toast.LENGTH_SHORT).show();
     }
 
     public void onCancelButtonClick(View view) {

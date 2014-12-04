@@ -185,7 +185,7 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:id="@+id/signal"
                 android:layout_gravity="center_horizontal"
-                android:onClick="setSignal"
+                android:onClick="setSignalTextView"
                 android:clickable="true" />
 
             <TextView
