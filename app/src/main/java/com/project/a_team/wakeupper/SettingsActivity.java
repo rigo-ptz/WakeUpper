@@ -34,13 +34,8 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
         Intent intent = getIntent();
         String aID = intent.getStringExtra(MainActivity.alarmID);
-        if(aID.equals("-1")) {
-            newAlarm = true;
+        newAlarm = aID.equals("-1");
             //Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
-        } else
-            newAlarm = false;
-
-
 
         /* Слушатели */
         final SeekBar seekbar = (SeekBar)findViewById(R.id.volume);
@@ -59,18 +54,11 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             }
         });
 
-        alarm = new Alarm();
-
-        if(!(newAlarm)) {
-            /* TODO getSettings() */
-            alarm = new Alarm(/**/);
+        if(newAlarm) {
+            alarm = new Alarm();
+        } else {
+            alarm = DataProvider.getSettings(Integer.parseInt(aID));
         }
-
-        /* TEST*/
-        alarm.setDays("0101011");
-        alarm.setVibration(true);
-        alarm.setActivity(4);
-        alarm.setVolume(40);
 
         /* Отобразить настройки на экране */
 
@@ -179,7 +167,6 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
     }
 
     @Override
