@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
-import android.text.format.Time;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -77,13 +76,19 @@ public abstract class DataProvider{
                 int volumeFromDB = c.getInt(volumeColIndex);
                 int activFromDB = c.getInt(activColIndex);
 
-                Time myTime = new Time();
-                myTime.set(timeFromDB); // если что переписать ручной перевод времени
+                //Time myTime = new Time();
+                //myTime.set(timeFromDB); // если что переписать ручной перевод времени
+
+                //int timeFromDB = c.getInt(c.getColumnIndex(DBHelper.TIME));
+                //Time myTime = new Time();
+                //myTime.set(timeFromDB); // если что переписать ручной перевод времени
+                //alarm.setTime(myTime);
+                //alarm.setTimeFromSeconds(timeFromDB);
 
                 alarm.setID(idFromDB);
                 alarm.setState(toBoolean(stateFromDB));
                 alarm.setDays(daysFromDB);
-                alarm.setTime(myTime);
+                alarm.setTimeFromSeconds(timeFromDB);
                 alarm.setSignal(Uri.parse(signalFromDB)); // ?
                 alarm.setVibration(toBoolean(vibroFromDB));
                 alarm.setVolume(volumeFromDB);
