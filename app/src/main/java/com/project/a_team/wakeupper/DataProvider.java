@@ -169,9 +169,10 @@ public abstract class DataProvider{
         alarm.setDays(c.getString(c.getColumnIndex(DBHelper.DAYS)));
 
         int timeFromDB = c.getInt(c.getColumnIndex(DBHelper.TIME));
-        Time myTime = new Time();
-        myTime.set(timeFromDB); // если что переписать ручной перевод времени
-        alarm.setTime(myTime);
+        //Time myTime = new Time();
+        //myTime.set(timeFromDB); // если что переписать ручной перевод времени
+        //alarm.setTime(myTime);
+        alarm.setTimeFromSeconds(timeFromDB);
 
         alarm.setSignal(Uri.parse(c.getString(c.getColumnIndex(DBHelper.SIGNAL)))); // ?
         alarm.setVibration(toBoolean(c.getInt(c.getColumnIndex(DBHelper.VIBRATION))));

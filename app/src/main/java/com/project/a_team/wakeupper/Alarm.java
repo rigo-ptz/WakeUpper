@@ -9,6 +9,7 @@ import android.util.Log;
  * Created by ef on 30.11.2014.
  */
 public class Alarm {
+    final static String LOG_TAG = "myLogs";
     private Integer ID;
     private Boolean state;
     private Time time;
@@ -109,6 +110,7 @@ public class Alarm {
     public void setTimeFromSeconds(Integer seconds) {
         time.hour = seconds / 3600;
         time.minute = seconds % 3600 / 60;
-        Log.d("log", "--- alarm " + time.hour + " " + time.minute);
+        Log.d(LOG_TAG, "--- Alarm, setTimeFromSeconds() ---");
+        Log.d(LOG_TAG, "hour=" + time.hour + " and minute=" + time.minute);
     }
 }
