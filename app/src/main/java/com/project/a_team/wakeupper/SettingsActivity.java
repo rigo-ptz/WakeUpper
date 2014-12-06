@@ -41,8 +41,8 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         Editor.setContext(getApplicationContext());
 
         Intent intent = getIntent();
-        String aID = intent.getStringExtra(MainActivity.alarmID);
-        newAlarm = aID.equals("-1");
+        int aID = intent.getIntExtra("id", -1); // второе - по умолчанию
+        newAlarm = aID == -1;
             //Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
 
         /* Слушатели */
@@ -64,7 +64,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         if(newAlarm) {
             alarm = new Alarm();
         } else {
-            alarm = DataProvider.getSettings(Integer.parseInt(aID));
+            alarm = DataProvider.getSettings(aID);
         }
 
         /* Отобразить настройки на экране */
@@ -267,9 +267,13 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                                 Toast.makeText(getApplicationContext(),
                                         R.string.errorOnCreateAlarm, Toast.LENGTH_SHORT).show();
                             } else {
+                                //Yamushev Igor 06.12.14
+                                setResult(RESULT_OK);
                                 finish();
                             }
                         } else {
+                            //Yamushev Igor 06.12.14
+                            setResult(RESULT_OK);
                             Editor.updateAlarm(alarm);
                             finish();
                         }

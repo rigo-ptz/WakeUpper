@@ -7,8 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.text.format.Time;
 import android.util.Log;
 
 
@@ -23,6 +21,8 @@ public class Editor {
     static AlarmManager alarmManager;
 
     public static Boolean createAlarm(Alarm alarm) {
+        Log.d(LOG_TAG, "--- Editor, createAlarm() ---");
+        Log.d(LOG_TAG, "Create new alarm");
         DBHelper dbHelper = new DBHelper(DBHelper.myContext);
         SQLiteDatabase db;
 
@@ -32,7 +32,7 @@ public class Editor {
             ContentValues values = new ContentValues(putValues(alarm));
 
             long rowID = db.insert(DBHelper.TABLE_NAME, null, values);
-            Log.d(LOG_TAG, "row inserted, ID = " + rowID);
+            Log.d(LOG_TAG, "Alarm ID= " + rowID);
 
             dbHelper.close();
 
@@ -46,6 +46,9 @@ public class Editor {
     }
 
     public static void updateAlarm(Alarm alarm) {
+        Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
+        Log.d(LOG_TAG, "Update alarm with ID="+alarm.getID());
+
         DBHelper dbHelper = new DBHelper(DBHelper.myContext);
         SQLiteDatabase db;
 
@@ -69,6 +72,9 @@ public class Editor {
     }
 
     public static void deleteAlarm(Integer alarmID) {
+        Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
+        Log.d(LOG_TAG, "Delete alarm with ID="+alarmID);
+
         DBHelper dbHelper = new DBHelper(DBHelper.myContext);
         SQLiteDatabase db;
 
@@ -99,7 +105,7 @@ public class Editor {
             ContentValues newState = new ContentValues();
             if (state) {
                 newState.put(DBHelper.STATE, 1);
-                // TODO добавл. в сис. план.
+                // TODO добавл. в сис. план. ЛУЧШЕ
             }
             else {
                 newState.put(DBHelper.STATE, 0);

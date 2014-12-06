@@ -28,6 +28,7 @@ public abstract class DataProvider{
     public static Alarm getSettings(Integer alarmID) {
 
         // можно и сразу все конструктору отдать внизу, а можно и сеттерами
+        // но так лучше, если ошибка, то вернется версия по умолчанию
         Alarm alarm = new Alarm();
 
         // подключаемся к БД
@@ -159,5 +160,65 @@ public abstract class DataProvider{
 
     public static void setContext(Context context) {
         myContext = context;
+    }
+
+    private static Alarm fillAlarm(Cursor c) {
+        Alarm alarm = new Alarm();
+        alarm.setID(c.getInt(c.getColumnIndex(DBHelper.ID)));
+        alarm.setState(toBoolean(c.getInt(c.getColumnIndex(DBHelper.STATE))));
+        alarm.setDays(c.getString(c.getColumnIndex(DBHelper.DAYS)));
+
+        int timeFromDB = c.getInt(c.getColumnIndex(DBHelper.TIME));
+        Time myTime = new Time();
+        myTime.set(timeFromDB); // если что переписать ручной перевод времени
+        alarm.setTime(myTime);
+
+        alarm.setSignal(Uri.parse(c.getString(c.getColumnIndex(DBHelper.SIGNAL)))); // ?
+        alarm.setVibration(toBoolean(c.getInt(c.getColumnIndex(DBHelper.VIBRATION))));
+        alarm.setVolume(c.getInt(c.getColumnIndex(DBHelper.VOLUME)));
+        alarm.setActivity(c.getInt(c.getColumnIndex(DBHelper.ACTIV)));
+        return alarm;
+    }
+
+    public static List<Alarm> getAlarms() {
+        // подключаемся к БД
+        try {
+            db = dbHelper.getWritableDatabase();
+        } catch (Exception ex) {
+            Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
+            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+        }
+
+        String select = "SELECT * FROM " + DBHelper.TABLE_NAME;
+
+        Cursor c = db.rawQuery(select, null);
+        //Cursor c = db.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
+        Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
+        Log.d(LOG_TAG, String.valueOf(c.getColumnIndex(DBHelper.ID)));
+
+        List<Alarm> alarmList = new ArrayList<Alarm>();
+
+/*        while (c.moveToNext()) {
+            alarmList.add(fillAlarm(c));
+        }*/
+
+        // ставим позицию курсора на первую строку выборки
+        // если в выборке нет строк, вернется false
+        if (c.moveToFirst()) {
+            do{
+                alarmList.add(fillAlarm(c));
+            } while (c.moveToNext());
+        } else {
+            Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
+            Log.d(LOG_TAG, "0 rows");
+            c.close();
+        }
+
+        if (!alarmList.isEmpty()) {
+            return alarmList;
+        }
+
+        db.close();
+        return null;
     }
 }

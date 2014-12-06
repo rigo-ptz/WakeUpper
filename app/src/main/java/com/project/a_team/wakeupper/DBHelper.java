@@ -17,7 +17,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DBNAME = "WakeUpperDB";
     public static final String TABLE_NAME = "tblAlarmSettings";
-    public static final String ID = "_intId";
+    public static final String ID = "intId";
     public static final String STATE = "intState";
     public static final String DAYS = "txtDays";
     public static final String TIME = "intTime";
@@ -37,7 +37,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         Log.d(LOG_TAG, "--- onCreate database ---");
         // создаем таблицу с полями
-        db.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID + " integer PRIMARY KEY," +
+        db.execSQL("CREATE TABLE " + TABLE_NAME + "(" + ID + " integer PRIMARY KEY AUTOINCREMENT," +
                 STATE + " integer," +
                 DAYS + " text," +
                 TIME + " integer," +
