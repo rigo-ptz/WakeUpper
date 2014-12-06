@@ -69,4 +69,6 @@
     <!-- For DataProvider. Created by Yamushev Igor on 04.12.14 -->
     <string name="noSuchIDError">К сожалению произошла ошибка такого
                  будильника нет в базе. Пожалуйста, создайте новый</string>
+    <string name="title_activity_test_acrivity">Test buttons</string>
+
 </resources>
