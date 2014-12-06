@@ -3,6 +3,7 @@ package com.project.a_team.wakeupper;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.text.format.Time;
+import android.util.Log;
 
 /**
  * Created by ef on 30.11.2014.
@@ -72,6 +73,8 @@ public class Alarm {
         return activity;
     }
 
+    public Integer getTimeInSeconds() { return time.hour * 60 * 60 + time.minute * 60; }
+
     // Yamushev Igor 03.12.14
     public void setID(Integer ID) { this.ID = ID; }
 
@@ -101,5 +104,11 @@ public class Alarm {
 
     public void setActivity(Integer aActivity) {
         activity = aActivity;
+    }
+
+    public void setTimeFromSeconds(Integer seconds) {
+        time.hour = seconds / 3600;
+        time.minute = seconds % 3600 / 60;
+        Log.d("log", "--- alarm " + time.hour + " " + time.minute);
     }
 }

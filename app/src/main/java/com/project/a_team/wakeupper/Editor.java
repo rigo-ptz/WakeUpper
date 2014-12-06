@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.ContactsContract;
+import android.text.format.Time;
 import android.util.Log;
 
 
@@ -111,7 +112,6 @@ public class Editor {
 
             dbHelper.close();
 
-            //TODO системный планировщик
         } catch (Exception ex) {
             Log.d(LOG_TAG, "--- Editor, changeState() ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
@@ -129,7 +129,7 @@ public class Editor {
         //txtDays
         values.put(DBHelper.DAYS, alarm.getDays());
         //intTime
-        values.put(DBHelper.TIME, alarm.getTime().toMillis(false));
+        values.put(DBHelper.TIME, alarm.getTimeInSeconds());
         //txtSignal
         values.put(DBHelper.SIGNAL, alarm.getSignal().toString());
         //intVibration

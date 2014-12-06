@@ -41,8 +41,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         Editor.setContext(getApplicationContext());
 
         Intent intent = getIntent();
-        //String aID = intent.getStringExtra(MainActivity.alarmID);
-        String aID = "1";
+        String aID = intent.getStringExtra(MainActivity.alarmID);
         newAlarm = aID.equals("-1");
             //Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
 
