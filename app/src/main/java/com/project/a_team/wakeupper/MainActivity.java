@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements OnClickListener  {
@@ -24,15 +25,18 @@ public class MainActivity extends Activity implements OnClickListener  {
     final String LOG_TAG = "myLogs";
 
     //кнопка добавления нового будильника
-    TextView tvAdd;
+    static TextView tvAdd;
 
     DBHelper dbHelper;
 
+    //адаптер для заполнения списка
     private AlarmListAdapter mAdapter;
     private Context mContext;
 
     // Для передачи в SettingsActivity
     public static final String alarmID = "com.project.a_team.wakeupper.ALARM_ID";
+
+    public static int alarmCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,8 +90,15 @@ public class MainActivity extends Activity implements OnClickListener  {
                 // TEST
                 //intent.putExtra(alarmID, "-1");
 
+                //alarmCount++;
+                //Log.d(LOG_TAG, "--- MainActivity, onClick() ---");
+                //Log.d(LOG_TAG, "increase alarmCount = " + alarmCount);
+                if(countCheck()) {
+                    break;
+                }
+
                 Intent intent = new Intent(this, SettingsActivity.class);
-                intent.putExtra("id", -1);
+                intent.putExtra(alarmID, -1);
                 startActivityForResult(intent, 0);
 
                 // Testing ArithmeticActivity
@@ -106,6 +117,24 @@ public class MainActivity extends Activity implements OnClickListener  {
                 break;
             default:
                 break;
+        }
+    }
+
+    protected boolean countCheck() {
+        if(alarmCount >= 10) {
+            Toast.makeText(this, "Только 10 будильников", Toast.LENGTH_LONG).show();
+            changeVisible(true);
+            //tvAdd.setVisibility(View.INVISIBLE);
+            return true;
+        }
+        return false;
+    }
+
+    public static void changeVisible(boolean isMore) {
+        if(isMore) {
+            tvAdd.setVisibility(View.INVISIBLE);
+        } else {
+            tvAdd.setVisibility(View.VISIBLE);
         }
     }
 
@@ -135,14 +164,14 @@ public class MainActivity extends Activity implements OnClickListener  {
     public void startSettingsActivity(int id) {
         Intent intent = new Intent(this, SettingsActivity.class);
         String str = Integer.toString(id);
-        intent.putExtra("id", id);
+        intent.putExtra(alarmID, id);
         startActivityForResult(intent, 0);
     }
 
     public void deleteAlarm(int id) {
         final int alarmId = id;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Пожалуйста подтвердите")
+        builder.setMessage("Пожалуйста, подтвердите")
                 .setTitle("Удалить выбранный будильник?")
                 .setCancelable(true)
                 .setNegativeButton("Нет", null)
@@ -159,6 +188,11 @@ public class MainActivity extends Activity implements OnClickListener  {
                         mAdapter.notifyDataSetChanged();
                         //устанавливаем будильники
                         //AlarmManagerHelper.setAlarms(mContext);
+
+                        //уменьшаем количество будильников
+                        /*alarmCount--;
+                        Log.d(LOG_TAG, "--- MainActivity, deleteAlarm() ---");
+                        Log.d(LOG_TAG, "decrease alarmCount = " + alarmCount);*/
                     }
                 }).show();
     }

@@ -12,6 +12,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -29,6 +30,8 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
     private TextView timePickerLabel;
     private TextView signalTextView;
 
+    final String LOG_TAG = "myLogs";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +44,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         Editor.setContext(getApplicationContext());
 
         Intent intent = getIntent();
-        int aID = intent.getIntExtra("id", -1); // второе - по умолчанию
+        int aID = intent.getIntExtra(MainActivity.alarmID, -1); // второе - по умолчанию
         newAlarm = aID == -1;
             //Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
 
@@ -268,6 +271,9 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                                         R.string.errorOnCreateAlarm, Toast.LENGTH_SHORT).show();
                             } else {
                                 //Yamushev Igor 06.12.14
+                                MainActivity.alarmCount++;
+                                Log.d(LOG_TAG, "--- SettingsActivity, onConfirmButtonClick() ---");
+                                Log.d(LOG_TAG, "increase alarmCount = " + MainActivity.alarmCount);
                                 setResult(RESULT_OK);
                                 finish();
                             }

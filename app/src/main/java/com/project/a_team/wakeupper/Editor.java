@@ -32,7 +32,7 @@ public class Editor {
             ContentValues values = new ContentValues(putValues(alarm));
 
             long rowID = db.insert(DBHelper.TABLE_NAME, null, values);
-            Log.d(LOG_TAG, "Alarm ID= " + rowID);
+            Log.d(LOG_TAG, "rowID = " + rowID);
 
             dbHelper.close();
 

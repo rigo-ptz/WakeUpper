@@ -200,7 +200,7 @@ public abstract class DataProvider{
         Cursor c = db.rawQuery(select, null);
         //Cursor c = db.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
         Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
-        Log.d(LOG_TAG, String.valueOf(c.getColumnIndex(DBHelper.ID)));
+        //Log.d(LOG_TAG, String.valueOf(c.getColumnIndex(DBHelper.ID)));
 
         List<Alarm> alarmList = new ArrayList<Alarm>();
 

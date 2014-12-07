@@ -38,6 +38,12 @@ public class AlarmListAdapter extends BaseAdapter{
     @Override
     public int getCount() {
         if (mAlarms != null) {
+            MainActivity.alarmCount = mAlarms.size();
+            Log.d(LOG_TAG, "--- AlarmListAdapter, getCount() ---");
+            Log.d(LOG_TAG, "alarmCount from getCount = " + MainActivity.alarmCount);
+            if(MainActivity.alarmCount <= 10) {
+                MainActivity.changeVisible(false);
+            }
             return mAlarms.size();
         }
         return 0;
