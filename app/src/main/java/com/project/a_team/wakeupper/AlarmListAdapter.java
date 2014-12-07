@@ -95,7 +95,7 @@ public class AlarmListAdapter extends BaseAdapter{
         updateTextColor((TextView) view.findViewById(R.id.alarm_item_saturday), days[6] == '1');
 
         ToggleButton btnToggle = (ToggleButton) view.findViewById(R.id.alarm_item_toggle);
-        btnToggle.setChecked(alarm.getState());
+        //btnToggle.setChecked(alarm.getState()); если тут кароч, то он ниже все меняет при листании
         btnToggle.setTag(alarm.getID()); // связываем кнопку вкл. с ID будильника
 
         btnToggle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
@@ -105,6 +105,8 @@ public class AlarmListAdapter extends BaseAdapter{
                 ((MainActivity) mContext).setAlarmEnabled((Integer) buttonView.getTag(), isChecked);
             }
         });
+
+        btnToggle.setChecked(alarm.getState());
 
         view.setTag(alarm.getID()); // связываем view с ID будильника
 
