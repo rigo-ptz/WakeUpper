@@ -42,11 +42,14 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
         //посылкаем в Editor контекст для AlarmManager
         Editor.setContext(getApplicationContext());
+        Alarm.setContext(getApplicationContext());
+
 
         Intent intent = getIntent();
         int aID = intent.getIntExtra(MainActivity.alarmID, -1); // второе - по умолчанию
         newAlarm = aID == -1;
-            //Toast.makeText(this, "New alarm", Toast.LENGTH_SHORT).show();
+
+        Toast.makeText(this, newAlarm.toString(), Toast.LENGTH_SHORT).show();
 
         /* Слушатели */
         SeekBar volumeSeekBar = (SeekBar)findViewById(R.id.volume);
@@ -69,6 +72,22 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         } else {
             alarm = DataProvider.getSettings(aID);
         }
+
+        /* FOR TEST TODO remove this test*/
+        /*
+        alarm.setState(true);
+        alarm.setDays("1010001");
+        Time t = new Time();
+        t.set(0,34,12,0,0,0);
+        alarm.setTime(t);
+        alarm.setSignal(Uri.parse("content://media/internal/audio/media/30"));
+        AudioManager audioManager2 =
+                (AudioManager)getSystemService(Context.AUDIO_SERVICE);
+
+        alarm.setVolume(audioManager2.getStreamMaxVolume(AudioManager.STREAM_ALARM) / 2);
+        alarm.setVibration(true);
+        alarm.setActivity(1);
+        */
 
         /* Отобразить настройки на экране */
 
@@ -134,6 +153,8 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                         time.set(0, minute, hourOfDay, 0, 0, 0);
                         timePickerLabel.setText(time.format("%R"));
                         alarm.setTime(time);
+                        // TODO remove test
+                        // Toast.makeText(getApplicationContext(), time.hour + " " + time.minute, Toast.LENGTH_SHORT).show();
                     }
                 }, mHour, mMinute, true);
         tpd.setCancelable(true);
@@ -174,6 +195,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
         alarm.setVolume(progress);
+
     }
 
     @Override
@@ -229,6 +251,8 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             activity = 4;
 
         alarm.setActivity(activity);
+        Toast.makeText(getApplicationContext(), activity.toString(), Toast.LENGTH_SHORT).show();
+
     }
 
     public void onCancelButtonClick(View view) {

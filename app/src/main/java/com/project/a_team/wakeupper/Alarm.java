@@ -1,5 +1,8 @@
 package com.project.a_team.wakeupper;
 
+import android.app.AlarmManager;
+import android.content.Context;
+import android.media.AudioManager;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.text.format.Time;
@@ -9,7 +12,6 @@ import android.util.Log;
  * Created by ef on 30.11.2014.
  */
 public class Alarm {
-    final static String LOG_TAG = "myLogs";
     private Integer ID;
     private Boolean state;
     private Time time;
@@ -19,6 +21,8 @@ public class Alarm {
     private Integer volume;
     private Integer activity;
 
+    private static Context context;
+
     public Alarm() {
         ID = -1;
         state = true;
@@ -26,7 +30,10 @@ public class Alarm {
         days = "0000000";
         signal = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE);
         vibration = false;
-        volume = 0;
+
+        AudioManager audioManager = (AudioManager)context.getSystemService(Context.AUDIO_SERVICE);
+        volume = audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM) / 2;
+
         activity = 0;
     }
 
@@ -110,7 +117,10 @@ public class Alarm {
     public void setTimeFromSeconds(Integer seconds) {
         time.hour = seconds / 3600;
         time.minute = seconds % 3600 / 60;
-        Log.d(LOG_TAG, "--- Alarm, setTimeFromSeconds() ---");
-        Log.d(LOG_TAG, "hour=" + time.hour + " and minute=" + time.minute);
+        Log.d("log", "--- alarm " + time.hour + " " + time.minute);
+    }
+
+    public static void setContext(Context ctx) {
+        context = ctx;
     }
 }
