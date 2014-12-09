@@ -60,6 +60,7 @@
     <string name="activityNoActivity">Без Активности</string>
     <string name="vibrationLabel">Вибрация:</string>
     <string name="errorOnCreateAlarm">Не удалось создать будильник</string>
+    <string name="silentRingtone">Без звука</string>
 
     <!-- For UnblockActivity -->
     <string name="unblock">Отключить</string>

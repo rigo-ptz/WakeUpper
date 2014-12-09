@@ -7,10 +7,14 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
 import android.media.AudioManager;
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
@@ -49,7 +53,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         int aID = intent.getIntExtra(MainActivity.alarmID, -1); // второе - по умолчанию
         newAlarm = aID == -1;
 
-        Toast.makeText(this, newAlarm.toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, newAlarm.toString(), Toast.LENGTH_SHORT).show();
 
         /* Слушатели */
         SeekBar volumeSeekBar = (SeekBar)findViewById(R.id.volume);
@@ -123,7 +127,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
         /* Signal */
         signalTextView = (TextView)findViewById(R.id.signal);
-        signalTextView.setText(alarm.getSignal().toString());
+        signalTextView.setText(getFilenameFromURI(alarm.getSignal()));
 
         /* Activity */
         switch (alarm.getActivity()) {
@@ -206,11 +210,13 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
     public void onStopTrackingTouch(SeekBar seekBar) {
     }
 
-    public void setSignalTextView(View view) {
+    /* Signal picker */
+    public void setSignal(View view) {
         Intent intent=new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE, RingtoneManager.TYPE_RINGTONE);
         intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, alarm.getSignal());
-        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI, alarm.getSignal());
+        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI,
+                RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE));
         startActivityForResult(intent , 1);
     }
 
@@ -221,13 +227,24 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                 case 1:
                     Uri ringtone = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
                     alarm.setSignal(ringtone);
-                    signalTextView.setText(ringtone.toString());
+                    signalTextView.setText(getFilenameFromURI(ringtone));
                     break;
 
                 default:
                     break;
             }
         }
+    }
+
+    private String getFilenameFromURI(Uri uri) {
+        String fileName = "";
+        if(uri == null) {
+            fileName = "Silent";
+        } else {
+            Ringtone r = RingtoneManager.getRingtone(this, uri);
+            fileName = r.getTitle(this);
+        }
+        return fileName;
     }
 
 
@@ -251,7 +268,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             activity = 4;
 
         alarm.setActivity(activity);
-        Toast.makeText(getApplicationContext(), activity.toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), activity.toString(), Toast.LENGTH_SHORT).show();
 
     }
 
