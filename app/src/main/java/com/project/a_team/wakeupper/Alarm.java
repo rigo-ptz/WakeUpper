@@ -120,6 +120,14 @@ public class Alarm {
         Log.d("log", "--- alarm " + time.hour + " " + time.minute);
     }
 
+    public boolean getRepeatingDay(int dayOfWeek) {
+        dayOfWeek = (dayOfWeek + 5) % 7;
+        if (days.charAt(dayOfWeek) == '1')
+            return true;
+        else
+            return false;
+    }
+
     public static void setContext(Context ctx) {
         context = ctx;
     }

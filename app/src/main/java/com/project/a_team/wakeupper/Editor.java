@@ -8,6 +8,9 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 
 /**
@@ -152,35 +155,71 @@ public class Editor {
     }
 
     private static void addAlarmToManager(Alarm alarm) {
-        // Интент срабатывания будильника
-        Intent rcvIntent = new Intent(appContext, AlarmReceiver.class);
+        PendingIntent alarmIntent = createPendingIntent(alarm.getID());
 
-        // Кладем в интент минимальную информацию о будильнике
-        Bundle extras = new Bundle();
-        extras.putInt(MainActivity.alarmID, alarm.getID());
-        rcvIntent.putExtras(extras);
+        // Танцуем с бубном чтобы найти следующую дату
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, alarm.getTime().hour);
+        calendar.set(Calendar.MINUTE, alarm.getTime().minute);
+        calendar.set(Calendar.SECOND, 00);
 
-        // Получаем PendingIntent
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(appContext, 0, rcvIntent, 0);
+        //Find next time to set
+        final int nowDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        final int nowHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        final int nowMinute = Calendar.getInstance().get(Calendar.MINUTE);
+        boolean repeatable = alarm.getDays().contains("0000000");
+
+        boolean alarmSet = false;
 
         // Устанавливаем будильник
-        alarmManager.set(AlarmManager.RTC_WAKEUP, alarm.getTime().toMillis(false), alarmIntent);
+        for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; ++dayOfWeek) {
+            if (alarm.getRepeatingDay(dayOfWeek) && dayOfWeek >= nowDay &&
+                    !(dayOfWeek == nowDay && alarm.getTime().hour < nowHour) &&
+                    !(dayOfWeek == nowDay && alarm.getTime().hour == nowHour && alarm.getTime().minute <= nowMinute)) {
+                calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+
+                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
+                Toast.makeText(appContext, "БУДИЛЬНИК УСТАНОВЛЕН", Toast.LENGTH_LONG).show();
+                alarmSet = true;
+                break;
+            }
+        }
+
+        //Else check if it's earlier in the week
+        if (!alarmSet) {
+            for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; ++dayOfWeek) {
+                if (alarm.getRepeatingDay(dayOfWeek - 1) && dayOfWeek <= nowDay && repeatable) {
+                    calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek);
+                    calendar.add(Calendar.WEEK_OF_YEAR, 1);
+
+                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
+                    Toast.makeText(appContext, "БУДИЛЬНИК УСТАНОВЛЕН", Toast.LENGTH_LONG).show();
+                    alarmSet = true;
+                    break;
+                }
+            }
+        }
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, 0, alarmIntent);
     }
 
     private static void deleteAlarmFromManager(int alarmID) {
+        PendingIntent alarmIntent = createPendingIntent(alarmID);
+
+        // Удаляем будильник
+        alarmManager.cancel(alarmIntent);
+    }
+
+    private static PendingIntent createPendingIntent(int alarmID) {
         // Интент срабатывания будильника
         Intent rcvIntent = new Intent(appContext, AlarmReceiver.class);
 
         // Кладем в интент минимальную информацию о будильнике
-        Bundle extras = new Bundle();
-        extras.putInt(MainActivity.alarmID, alarmID);
-        rcvIntent.putExtras(extras);
+        rcvIntent.putExtra(MainActivity.alarmID, alarmID);
 
         // Получаем PendingIntent
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(appContext, 0, rcvIntent, 0);
-
-        // Удаляем будильник
-        alarmManager.cancel(alarmIntent);
+        return PendingIntent.getBroadcast(appContext, alarmID, rcvIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     public static void setContext(Context context) {
