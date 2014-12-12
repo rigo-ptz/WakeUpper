@@ -39,7 +39,10 @@ public class Editor {
 
             dbHelper.close();
 
-            // TODO сис. планировщик
+            // добавление в сис. планировщик, если enabled
+            if (alarm.getState()) {
+                updateAlarmManager(alarm);
+            }
         } catch (Exception ex) {
             Log.d(LOG_TAG, "--- Editor, createAlarm() ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
@@ -66,7 +69,12 @@ public class Editor {
 
             dbHelper.close();
 
-            // TODO сис. планировщик
+            // Если будильник будет включен - обновляем, если нет - пытаемся удалить
+            if (alarm.getState()) {
+                updateAlarmManager(alarm);
+            } else {
+                deleteAlarmFromManager(alarm.getID());
+            }
         } catch (Exception ex) {
             Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
@@ -90,6 +98,7 @@ public class Editor {
 
             dbHelper.close();
 
+            // безусловно удаляем будильник
             deleteAlarmFromManager(alarmID);
         } catch (Exception ex) {
             Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
@@ -108,11 +117,11 @@ public class Editor {
             ContentValues newState = new ContentValues();
             if (state) {
                 newState.put(DBHelper.STATE, 1);
-                // TODO добавл. в сис. план. ЛУЧШЕ
+                updateAlarmManager(DataProvider.getSettings(alarmID));
             }
             else {
                 newState.put(DBHelper.STATE, 0);
-                // TODO удаление из сис. план.
+                deleteAlarmFromManager(alarmID);
             }
 
             int updCount = db.update(DBHelper.TABLE_NAME, newState,
@@ -154,59 +163,56 @@ public class Editor {
         return values;
     }
 
-    private static void addAlarmToManager(Alarm alarm) {
+
+    private static void updateAlarmManager(Alarm alarm) {
+        // Создаем интент будильника
         PendingIntent alarmIntent = createPendingIntent(alarm.getID());
 
-        // Танцуем с бубном чтобы найти следующую дату
+        // Отменяем будильник, если есть
+        alarmManager.cancel(alarmIntent);
+
+        // Начинаем с текущего времени
         Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(System.currentTimeMillis());
+        // Сохраняем текущее время из календаря
+        int nowHour = calendar.get(Calendar.HOUR_OF_DAY);
+        int nowMinute = calendar.get(Calendar.MINUTE);
+
+        // Если текущее время (ЧЧ:ММ) больше нужного, сразу добавляем день
+        if (alarm.getTime().hour < nowHour  ||
+                alarm.getTime().hour == nowHour && alarm.getTime().minute <= nowMinute) {
+            calendar.add(Calendar.DAY_OF_YEAR, 1);
+        }
+        // Устанавливаем время срабатывания будильника (ЧЧ:ММ)
         calendar.set(Calendar.HOUR_OF_DAY, alarm.getTime().hour);
         calendar.set(Calendar.MINUTE, alarm.getTime().minute);
-        calendar.set(Calendar.SECOND, 00);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
 
-        //Find next time to set
-        final int nowDay = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
-        final int nowHour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
-        final int nowMinute = Calendar.getInstance().get(Calendar.MINUTE);
-        boolean repeatable = alarm.getDays().contains("0000000");
-
-        boolean alarmSet = false;
-
-        // Устанавливаем будильник
-        for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; ++dayOfWeek) {
-            if (alarm.getRepeatingDay(dayOfWeek) && dayOfWeek >= nowDay &&
-                    !(dayOfWeek == nowDay && alarm.getTime().hour < nowHour) &&
-                    !(dayOfWeek == nowDay && alarm.getTime().hour == nowHour && alarm.getTime().minute <= nowMinute)) {
-                calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek);
-
-                alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
-                Toast.makeText(appContext, "БУДИЛЬНИК УСТАНОВЛЕН", Toast.LENGTH_LONG).show();
-                alarmSet = true;
-                break;
-            }
-        }
-
-        //Else check if it's earlier in the week
-        if (!alarmSet) {
-            for (int dayOfWeek = Calendar.SUNDAY; dayOfWeek <= Calendar.SATURDAY; ++dayOfWeek) {
-                if (alarm.getRepeatingDay(dayOfWeek - 1) && dayOfWeek <= nowDay && repeatable) {
-                    calendar.set(Calendar.DAY_OF_WEEK, dayOfWeek);
-                    calendar.add(Calendar.WEEK_OF_YEAR, 1);
-
-                    alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
-                    Toast.makeText(appContext, "БУДИЛЬНИК УСТАНОВЛЕН", Toast.LENGTH_LONG).show();
-                    alarmSet = true;
+        // Ищем день для срабатывания будильника
+        if (!alarm.getDays().contains("0000000")) {
+            int today = (calendar.get(Calendar.DAY_OF_WEEK) + 5) % 7;
+            int day, dayCount;
+            for (dayCount = 0; dayCount < 7; dayCount++) {
+                day = (today + dayCount) % 7;
+                if (alarm.getDays().charAt(day) == '1') {
                     break;
                 }
             }
+            calendar.add(Calendar.DAY_OF_WEEK, dayCount);
         }
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
+        Toast.makeText(appContext, "БУДИЛЬНИК УСТАНОВЛЕН", Toast.LENGTH_LONG).show();
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, 0, alarmIntent);
     }
 
     private static void deleteAlarmFromManager(int alarmID) {
+        // Создаем интент будильника
         PendingIntent alarmIntent = createPendingIntent(alarmID);
 
-        // Удаляем будильник
+        // Отменяем будильник если есть
         alarmManager.cancel(alarmIntent);
     }
 

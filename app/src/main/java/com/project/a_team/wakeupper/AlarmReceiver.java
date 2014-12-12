@@ -15,7 +15,10 @@ public class AlarmReceiver extends BroadcastReceiver {
         }
 
         // TODO Получаем информацию о будильнике из БД через DataProvider
+        Alarm alarm = DataProvider.getSettings(alarmID);
 
         // TODO Запуск UnblockActivity с информацией о будильнике
+        Intent unblockIntent = new Intent(context, UnblockActivity.class);
+        unblockIntent.putExtra(MainActivity.alarmID, alarmID);
     }
 }

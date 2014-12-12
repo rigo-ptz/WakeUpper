@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 public class UnblockActivity extends Activity {
 
+    public static final String alarmSettings = "com.project.a_team.wakeupper.ALARM_SETTINGS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
