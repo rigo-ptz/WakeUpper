@@ -44,8 +44,6 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         //посылаем в дата контекст для тоста. не удалять, иначе тост не покажется при ошибке
         DataProvider.setContext(this);
 
-        //посылкаем в Editor контекст для AlarmManager
-        Editor.setContext(getApplicationContext());
         Alarm.setContext(getApplicationContext());
 
 

@@ -43,6 +43,9 @@ public class MainActivity extends Activity implements OnClickListener  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        // Устанавливаем контекст в Editor
+        Editor.setContext(this);
+
         mContext = this;
 
         //находим элементы

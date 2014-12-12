@@ -52,7 +52,15 @@
         <activity
             android:name="com.project.a_team.wakeupper.UnblockActivity"
             android:label="@string/title_activity_unblock" >
+            <intent-filter>
+                <action android:name="com.project.a_team.wakeupper.intent.action.UNBLOCK" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+        <receiver android:name=".AlarmReceiver">
+
+        </receiver>
     </application>
 
 </manifest>

@@ -203,9 +203,10 @@ public class Editor {
         }
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
-        Toast.makeText(appContext, "БУДИЛЬНИК УСТАНОВЛЕН", Toast.LENGTH_LONG).show();
-
-        alarmManager.set(AlarmManager.RTC_WAKEUP, 0, alarmIntent);
+        long msUntilAlarm = calendar.getTimeInMillis() - System.currentTimeMillis();
+        Log.d(LOG_TAG, "--- Editor, updateAlarmManager() ---");
+        Log.d(LOG_TAG, "Until alarm " + alarm.getID() + " alert: " + (msUntilAlarm/1000) + " sec");
+        Toast.makeText(appContext, "Будильник сработает через " + (msUntilAlarm)/1000 + " секунд", Toast.LENGTH_LONG).show();
     }
 
     private static void deleteAlarmFromManager(int alarmID) {
@@ -224,8 +225,8 @@ public class Editor {
         rcvIntent.putExtra(MainActivity.alarmID, alarmID);
 
         // Получаем PendingIntent
-        return PendingIntent.getBroadcast(appContext, alarmID, rcvIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT);
+        return PendingIntent.getBroadcast(appContext, 0, rcvIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
     }
 
     public static void setContext(Context context) {
