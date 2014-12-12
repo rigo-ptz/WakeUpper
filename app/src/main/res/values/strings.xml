@@ -72,4 +72,76 @@
                  будильника нет в базе. Пожалуйста, создайте новый</string>
     <string name="title_activity_test_acrivity">Test buttons</string>
 
+
+    <!-- For PhraseActivity. Created by Sablina Nastya on 12.12.14 -->
+    <string name="PhrActTextView01">Введите текст по образцу:</string>
+    <string name="PhrActTextView02">Введите текст снова!</string>
+    <string name="PhrActTextView1">Случайная фраза</string>
+    <string name="PhrActButton">OK</string>
+
+    <string-array name="array0">
+        <item>новый</item>
+        <item>большой</item>
+        <item>должен</item>
+        <item>последний</item>
+        <item>русский</item>
+        <item>общий</item>
+        <item>высокий</item>
+        <item>хороший</item>
+        <item>главный</item>
+        <item>лучший</item>
+    </string-array>
+
+    <string-array name="array1">
+        <item>год</item>
+        <item>человек</item>
+        <item>день</item>
+        <item>раз</item>
+        <item>друг</item>
+        <item>глаз</item>
+        <item>вопрос</item>
+        <item>Андрей</item>
+        <item>дом</item>
+        <item>мир</item>
+    </string-array>
+
+    <string-array name="array2">
+        <item>был</item>
+        <item>мог</item>
+        <item>сказал</item>
+        <item>говорил</item>
+        <item>знал</item>
+        <item>стал</item>
+        <item>хотел</item>
+        <item>шел</item>
+        <item>имел</item>
+        <item>видел</item>
+    </string-array>
+
+    <string-array name="array3">
+        <item>думать</item>
+        <item>сделать</item>
+        <item>жить</item>
+        <item>делать</item>
+        <item>смотреть</item>
+        <item>работать</item>
+        <item>понять</item>
+        <item>пойти</item>
+        <item>спросить</item>
+        <item>дать</item>
+    </string-array>
+
+    <string-array name="array4">
+        <item>жизнь</item>
+        <item>руку</item>
+        <item>работу</item>
+        <item>сторону</item>
+        <item>страну</item>
+        <item>голову</item>
+        <item>силу</item>
+        <item>систему</item>
+        <item>часть</item>
+        <item>женщину</item>
+    </string-array>
+
 </resources>
