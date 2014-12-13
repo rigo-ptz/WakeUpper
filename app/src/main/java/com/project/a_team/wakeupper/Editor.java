@@ -225,8 +225,8 @@ public class Editor {
         rcvIntent.putExtra(MainActivity.alarmID, alarmID);
 
         // Получаем PendingIntent
-        return PendingIntent.getBroadcast(appContext, 0, rcvIntent,
-                PendingIntent.FLAG_CANCEL_CURRENT);
+        return PendingIntent.getBroadcast(appContext, alarmID, rcvIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
     }
 
     public static void setContext(Context context) {

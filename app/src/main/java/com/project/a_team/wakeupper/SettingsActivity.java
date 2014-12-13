@@ -44,9 +44,6 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         //посылаем в дата контекст для тоста. не удалять, иначе тост не покажется при ошибке
         DataProvider.setContext(this);
 
-        Alarm.setContext(getApplicationContext());
-
-
         Intent intent = getIntent();
         int aID = intent.getIntExtra(MainActivity.alarmID, -1); // второе - по умолчанию
         newAlarm = aID == -1;
