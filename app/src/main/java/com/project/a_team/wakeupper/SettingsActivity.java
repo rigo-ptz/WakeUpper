@@ -72,7 +72,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             alarm = DataProvider.getSettings(aID);
         }
 
-        /* FOR TEST TODO remove this test*/
+        /* FOR TEST */
         /*
         alarm.setState(true);
         alarm.setDays("1010001");
@@ -152,8 +152,6 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                         time.set(0, minute, hourOfDay, 0, 0, 0);
                         timePickerLabel.setText(time.format("%R"));
                         alarm.setTime(time);
-                        // TODO remove test
-                        // Toast.makeText(getApplicationContext(), time.hour + " " + time.minute, Toast.LENGTH_SHORT).show();
                     }
                 }, mHour, mMinute, true);
         tpd.setCancelable(true);
@@ -263,8 +261,6 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
             activity = 4;
 
         alarm.setActivity(activity);
-        //Toast.makeText(getApplicationContext(), activity.toString(), Toast.LENGTH_SHORT).show();
-
     }
 
     public void onCancelButtonClick(View view) {

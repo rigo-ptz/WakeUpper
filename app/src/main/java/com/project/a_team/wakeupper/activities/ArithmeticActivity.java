@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.project.a_team.wakeupper.R;
 
@@ -81,12 +82,9 @@ public class ArithmeticActivity extends Activity {
 
         TextView task = (TextView)findViewById(R.id.task);
         task.setText(equationX.toString() + " " + equationSign + " " + equationY.toString());
-
-        // TEST
-        equationSum = 123;
     }
 
-    private boolean checkEquation(int answerNumber) {
+    private Boolean checkEquation(int answerNumber) {
         return (answerNumber == equationSum);
     }
 }

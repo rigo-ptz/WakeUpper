@@ -19,6 +19,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.project.a_team.wakeupper.activities.ArithmeticActivity;
+
 
 public class MainActivity extends Activity implements OnClickListener  {
 
@@ -104,11 +106,6 @@ public class MainActivity extends Activity implements OnClickListener  {
                 Intent intent = new Intent(this, SettingsActivity.class);
                 intent.putExtra(alarmID, -1);
                 startActivityForResult(intent, 0);
-
-                // Testing ArithmeticActivity
-                //Intent intent = new Intent(this, ArithmeticActivity.class);
-
-                //startActivity(intent);
 
                 /*// подключаемся к БД
                 try {

@@ -4,27 +4,37 @@
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/taskLabel"
-        android:id="@+id/taskLabel"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="54dp"
-        android:layout_above="@+id/task"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/taskLabel"
+            android:id="@+id/taskLabel"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="101dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/task"
-        android:layout_gravity="center_horizontal"
-        android:layout_toEndOf="@+id/checkButton"
-        android:layout_marginBottom="65dp"
-        android:layout_above="@+id/checkButton"
-        android:layout_centerHorizontal="true" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/task"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="42dp"
+            android:layout_below="@+id/taskLabel"
+            android:layout_centerHorizontal="true" />
+
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:ems="10"
+            android:id="@+id/inputAnswer"
+            android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/task"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="24dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -32,17 +42,8 @@
         android:text="@string/checkAnswer"
         android:id="@+id/checkButton"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="171dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="onConfirmButtonClick" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="numberSigned"
-        android:ems="10"
-        android:id="@+id/inputAnswer"
-        android:layout_above="@+id/checkButton"
+        android:onClick="onConfirmButtonClick"
+        android:layout_marginTop="42dp"
+        android:layout_below="@+id/inputAnswer"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
