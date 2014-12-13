@@ -60,6 +60,7 @@ public class ArithmeticActivity extends Activity {
 
             generateEquation();
         } else {
+            setResult(RESULT_OK);
             finish();
         }
     }

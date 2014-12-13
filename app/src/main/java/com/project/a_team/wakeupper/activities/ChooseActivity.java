@@ -79,6 +79,8 @@ public class ChooseActivity extends Activity {
             }
         }
         Toast.makeText(this, R.string.kurosawa, Toast.LENGTH_SHORT).show();
+        setResult(RESULT_OK);
+        finish();
     }
 
     public void highlightView(View v) {

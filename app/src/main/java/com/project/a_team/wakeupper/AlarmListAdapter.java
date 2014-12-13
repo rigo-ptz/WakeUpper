@@ -98,6 +98,8 @@ public class AlarmListAdapter extends BaseAdapter{
         //btnToggle.setChecked(alarm.getState()); если тут кароч, то он ниже все меняет при листании
         btnToggle.setTag(alarm.getID()); // связываем кнопку вкл. с ID будильника
 
+        btnToggle.setChecked(alarm.getState());
+
         btnToggle.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 
             @Override
@@ -105,8 +107,6 @@ public class AlarmListAdapter extends BaseAdapter{
                 ((MainActivity) mContext).setAlarmEnabled((Integer) buttonView.getTag(), isChecked);
             }
         });
-
-        btnToggle.setChecked(alarm.getState());
 
         view.setTag(alarm.getID()); // связываем view с ID будильника
 

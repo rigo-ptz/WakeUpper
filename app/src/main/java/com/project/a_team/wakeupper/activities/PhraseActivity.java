@@ -35,6 +35,7 @@ public class PhraseActivity extends Activity {
 
     public void onClick(View view) {
         if (phraseEditText.getText().toString().equals(phrase)) {
+            setResult(RESULT_OK);
             finish();
         }
         else {

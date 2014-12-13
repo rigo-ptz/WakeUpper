@@ -73,6 +73,9 @@
         <receiver android:name=".AlarmReceiver">
 
         </receiver>
+        <service android:name=".AlarmReceiver$AlarmNotification" >
+
+        </service>
     </application>
 
 </manifest>

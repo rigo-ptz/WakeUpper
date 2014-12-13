@@ -163,6 +163,13 @@ public class Editor {
         return values;
     }
 
+    public static void unblockedAlarm(Alarm alarm) {
+        if (!alarm.getDays().contains("0000000")) {
+            updateAlarmManager(alarm);
+        } else {
+            changeState(alarm.getID(), false);
+        }
+    }
 
     private static void updateAlarmManager(Alarm alarm) {
         // Создаем интент будильника
@@ -230,6 +237,7 @@ public class Editor {
     }
 
     public static void setContext(Context context) {
+        Log.d(LOG_TAG, "--- Editor, setContext() ---");
         appContext = context;
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
