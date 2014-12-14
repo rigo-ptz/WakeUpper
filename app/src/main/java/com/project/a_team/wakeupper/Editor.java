@@ -5,6 +5,7 @@ import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
@@ -206,7 +207,27 @@ public class Editor {
         long msUntilAlarm = calendar.getTimeInMillis() - System.currentTimeMillis();
         //Log.d(LOG_TAG, "--- Editor, updateAlarmManager() ---");
         //Log.d(LOG_TAG, "Until alarm " + alarm.getID() + " alert: " + (msUntilAlarm/1000) + " sec");
-        Toast.makeText(appContext, "Будильник сработает через " + (msUntilAlarm)/1000 + " секунд", Toast.LENGTH_LONG).show();
+        Resources res = appContext.getResources();
+        String toast = res.getString(R.string.untilAlarm);
+        msUntilAlarm /= 1000;
+        int curPerforming;
+        curPerforming = (int)(msUntilAlarm/86400);
+        if (curPerforming > 0) {
+            toast += " " + Integer.toString(curPerforming) + " " + res.getString(R.string.days);
+        }
+        curPerforming = (int)((msUntilAlarm/3600)%24);
+        if (curPerforming > 0) {
+            toast += " " + Integer.toString(curPerforming) + " " + res.getString(R.string.hours);
+        }
+        curPerforming = (int)((msUntilAlarm/60)%60);
+        if (curPerforming > 0) {
+            toast += " " + Integer.toString(curPerforming) + " " + res.getString(R.string.minutes);
+        }
+        curPerforming = (int)(msUntilAlarm%60);
+        if (curPerforming > 0) {
+            toast += " " + Integer.toString(curPerforming) + " " + res.getString(R.string.seconds);
+        }
+        Toast.makeText(appContext, toast, Toast.LENGTH_LONG).show();
     }
 
     private static void deleteAlarmFromManager(int alarmID) {

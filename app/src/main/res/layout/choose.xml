@@ -30,7 +30,8 @@
             android:layout_margin="6dp"
             android:onClick="highlightView"
             android:clickable="true"
-            android:background="@color/backgroundColor" />
+            android:background="@color/backgroundColor"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,7 +42,8 @@
             android:layout_margin="6dp"
             android:onClick="highlightView"
             android:clickable="true"
-            android:background="@color/backgroundColor" />
+            android:background="@color/backgroundColor"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -52,7 +54,8 @@
             android:layout_margin="6dp"
             android:onClick="highlightView"
             android:clickable="true"
-            android:background="@color/backgroundColor" />
+            android:background="@color/backgroundColor"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -63,7 +66,8 @@
             android:layout_margin="6dp"
             android:onClick="highlightView"
             android:clickable="true"
-            android:background="@color/backgroundColor" />
+            android:background="@color/backgroundColor"
+            android:textSize="20dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -81,7 +85,8 @@
             android:layout_margin="6dp"
             android:onClick="highlightView"
             android:clickable="true"
-            android:background="@color/backgroundColor" />
+            android:background="@color/backgroundColor"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -92,7 +97,8 @@
             android:layout_margin="6dp"
             android:onClick="highlightView"
             android:clickable="true"
-            android:background="@color/backgroundColor" />
+            android:background="@color/backgroundColor"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -103,7 +109,8 @@
             android:layout_margin="6dp"
             android:onClick="highlightView"
             android:clickable="true"
-            android:background="@color/backgroundColor" />
+            android:background="@color/backgroundColor"
+            android:textSize="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -114,7 +121,8 @@
             android:layout_margin="6dp"
             android:onClick="highlightView"
             android:clickable="true"
-            android:background="@color/backgroundColor" />
+            android:background="@color/backgroundColor"
+            android:textSize="20dp" />
     </LinearLayout>
 
     <Button
