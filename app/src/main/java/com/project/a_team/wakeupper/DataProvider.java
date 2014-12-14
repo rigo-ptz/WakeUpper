@@ -18,7 +18,7 @@ public abstract class DataProvider{
 
     final static String LOG_TAG = "myLogs";
 
-    static DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+    //static DBHelper dbHelper = new DBHelper(DBHelper.myContext);
     static SQLiteDatabase db;
     static Context myContext;
 
@@ -26,6 +26,7 @@ public abstract class DataProvider{
     // TODO static method please . FIX
     public static Alarm getSettings(Integer alarmID) {
 
+        DBHelper dbHelper = new DBHelper(myContext);
         // можно и сразу все конструктору отдать внизу, а можно и сеттерами
         // но так лучше, если ошибка, то вернется версия по умолчанию
         Alarm alarm = new Alarm();
@@ -114,6 +115,7 @@ public abstract class DataProvider{
     }
 
     public static List getIDs() {
+        DBHelper dbHelper = new DBHelper(myContext);
         // массив заполненный ИД
         List<Integer> IDList = new ArrayList<Integer>();
 
@@ -187,6 +189,7 @@ public abstract class DataProvider{
     }
 
     public static List<Alarm> getAlarms() {
+        DBHelper dbHelper = new DBHelper(myContext);
         // подключаемся к БД
         try {
             db = dbHelper.getWritableDatabase();

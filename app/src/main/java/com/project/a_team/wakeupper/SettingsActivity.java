@@ -7,14 +7,11 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
-import android.provider.OpenableColumns;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.View;
@@ -42,7 +39,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         setContentView(R.layout.settings);
 
         //посылаем в дата контекст для тоста. не удалять, иначе тост не покажется при ошибке
-        DataProvider.setContext(this);
+        //DataProvider.setContext(this);
 
         Intent intent = getIntent();
         int aID = intent.getIntExtra(MainActivity.alarmID, -1); // второе - по умолчанию

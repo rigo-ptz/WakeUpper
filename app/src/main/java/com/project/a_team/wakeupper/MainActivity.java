@@ -46,7 +46,8 @@ public class MainActivity extends Activity implements OnClickListener  {
         // Устанавливаем контекст в Editor
         Editor.setContext(getApplicationContext());
         Alarm.setContext(getApplicationContext());
-
+        //
+        DataProvider.setContext(getApplicationContext());
         mContext = this;
 
         //находим элементы
