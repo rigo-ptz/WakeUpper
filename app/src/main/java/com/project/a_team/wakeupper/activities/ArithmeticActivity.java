@@ -31,25 +31,10 @@ public class ArithmeticActivity extends Activity {
 
 
     public void onConfirmButtonClick(View view) {
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(ArithmeticActivity.this);
-        builder.setTitle(R.string.alertTitle)
-                .setCancelable(false)
-                .setNegativeButton(R.string.stringOK,
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
         EditText answer = (EditText)findViewById(R.id.inputAnswer);
 
         if(answer.getText().toString().isEmpty()) {
-            builder.setMessage(R.string.enterAnswer);
-            AlertDialog alert = builder.create();
-            alert.show();
-
+            Toast.makeText(this, R.string.enterAnswer, Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -57,10 +42,7 @@ public class ArithmeticActivity extends Activity {
         answer.setText("");
 
         if(!(checkEquation(answerNumber))) {
-            builder.setMessage(R.string.incorrectTryAgain);
-            AlertDialog alert = builder.create();
-            alert.show();
-
+            Toast.makeText(this, R.string.incorrectTryAgain, Toast.LENGTH_LONG).show();
             generateEquation();
         } else {
             setResult(RESULT_OK);
