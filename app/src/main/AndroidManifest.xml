@@ -21,7 +21,7 @@
         </activity>
         <activity
             android:name="com.project.a_team.wakeupper.SettingsActivity"
-            android:label="@string/settingsManifestLabel" >
+            android:label="@string/title_activity_settings" >
             <intent-filter>
                 <action android:name="com.project.a_team.wakeupper.intent.action.SETTINGS" />
 
@@ -30,7 +30,7 @@
         </activity>
         <activity
             android:name="com.project.a_team.wakeupper.activities.ShakeActivity"
-            android:label="@string/shakeManifestLabel" >
+            android:label="@string/title_activity_shake" >
             <intent-filter>
                 <action android:name="com.project.a_team.wakeupper.intent.action.SHAKE" />
 
@@ -40,7 +40,7 @@
 
         <activity
             android:name="com.project.a_team.wakeupper.activities.PhraseActivity"
-            android:label="@string/shakeManifestLabel" >
+            android:label="@string/title_activity_phrase" >
             <intent-filter>
                 <action android:name="com.project.a_team.wakeupper.intent.action.PHRASE" />
 
@@ -50,7 +50,7 @@
 
         <activity
             android:name="com.project.a_team.wakeupper.activities.ArithmeticActivity"
-            android:label="@string/arithmeticManifestLabel" >
+            android:label="@string/title_activity_arithmetic" >
         </activity>
         <activity
             android:name="com.project.a_team.wakeupper.activities.ChooseActivity"

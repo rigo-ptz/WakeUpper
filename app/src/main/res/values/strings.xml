@@ -1,19 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">WakeUpper</string>
-    <string name="settingsManifestLabel">Settings</string>
-    <string name="shakeManifestLabel">Shake</string>
-    <string name="arithmeticManifestLabel">Arithmetic</string>
-    <string name="title_activity_arithmetic">ArithmeticActivity</string>
+    <!-- Activity titles -->
+    <string name="title_activity_arithmetic">Арифметика</string>
+    <string name="title_activity_choose">Выбор элементов</string>
+    <string name="title_activity_unblock">Будильник</string>
+    <string name="title_activity_settings">Настройки</string>
+    <string name="title_activity_shake">Тряска</string>
+    <string name="title_activity_phrase">Ввод по образцу</string>
     <string name="hello_world">Azaza</string>
     <string name="action_settings">Settings</string>
-    <string name="untilAlarm">Будильник сработает через</string>
-    <string name="days">д</string>
-    <string name="hours">ч</string>
-    <string name="minutes">мин</string>
-    <string name="seconds">с</string>
-
 
     <!-- For Activities. Created by kanphis on 02.12.14 -->
     <string name="checkAnswer">Проверить</string>
@@ -70,14 +66,17 @@
 
     <!-- For UnblockActivity -->
     <string name="unblock">Отключить</string>
-    <string name="title_activity_choose">Choose</string>
-    <string name="title_activity_unblock">Unblock</string>
+
+    <!-- For Editor -->
+    <string name="untilAlarm">Будильник сработает через</string>
+    <string name="days">д</string>
+    <string name="hours">ч</string>
+    <string name="minutes">мин</string>
+    <string name="seconds">с</string>
 
     <!-- For DataProvider. Created by Yamushev Igor on 04.12.14 -->
     <string name="noSuchIDError">К сожалению произошла ошибка такого
                  будильника нет в базе. Пожалуйста, создайте новый</string>
-    <string name="title_activity_test_acrivity">Test buttons</string>
-
 
     <!-- For PhraseActivity. Created by Sablina Nastya on 12.12.14 -->
     <string name="PhrActTextView01">Введите текст по образцу:</string>
