@@ -14,18 +14,11 @@
         android:text="@string/app_name"
         android:layout_gravity="center_horizontal" />
 
-    <TextClock
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textClock"
-        android:layout_gravity="center_horizontal" />
-
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="300dp"
         android:id="@+id/imageView"
-        android:layout_gravity="center_horizontal"
-        android:src="@drawable/alert" />
+        android:src="@drawable/alarm" />
 
     <Button
         android:layout_width="wrap_content"

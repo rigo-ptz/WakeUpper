@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.a_team.wakeupper.R;
+import com.project.a_team.wakeupper.UnblockActivity;
 
 import java.util.Random;
 
@@ -47,6 +48,7 @@ public class ChooseActivity extends Activity {
         random = new Random();
         resources = getResources();
         generateTask();
+        UnblockActivity.unlockScreen(this);
     }
 
     private void generateTask() {

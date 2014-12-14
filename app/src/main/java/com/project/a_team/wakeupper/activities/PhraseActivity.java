@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.project.a_team.wakeupper.R;
+import com.project.a_team.wakeupper.UnblockActivity;
 
 import java.util.Random;
 
@@ -29,6 +30,7 @@ public class PhraseActivity extends Activity {
         phraseEditText = (EditText) findViewById(R.id.editText0);
         phrase = generator();
         ShowPhraseTextView.setText(phrase);
+        UnblockActivity.unlockScreen(this);
     }
 
 

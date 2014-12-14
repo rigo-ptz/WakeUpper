@@ -28,8 +28,9 @@ public class UnblockActivity extends Activity {
 
         Intent intent = getIntent();
         activityTask = intent.getIntExtra(AlarmReceiver.alarmTask, 0);
+        Log.d("UnblockActivityLogs", "alarmTask: " + Integer.toString(activityTask));
 
-        unlockScreen();
+        unlockScreen(this);
     }
 
     public void unblockClick(View view) {
@@ -68,8 +69,8 @@ public class UnblockActivity extends Activity {
         finish();
     }
 
-    private void unlockScreen() {
-        Window window = this.getWindow();
+    public static void unlockScreen(Activity activity) {
+        Window window = activity.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
         window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
         window.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);

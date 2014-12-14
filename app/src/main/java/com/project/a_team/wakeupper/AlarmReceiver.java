@@ -99,11 +99,12 @@ public class AlarmReceiver extends BroadcastReceiver{
             // Working with notification
             notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             Notification.Builder builder = new Notification.Builder(getApplicationContext());
-            builder.setSmallIcon(R.drawable.alert);
+            builder.setSmallIcon(R.drawable.ic_launcher);
             builder.setContentTitle(getResources().getString(R.string.app_name));
             builder.setContentText(getResources().getString(R.string.unblock));
             builder.setOngoing(true);
-            builder.setContentIntent(PendingIntent.getActivity(getApplicationContext(), 0, unblockIntent, 0));
+            builder.setContentIntent(PendingIntent.getActivity(getApplicationContext(), 0,
+                                        unblockIntent, PendingIntent.FLAG_UPDATE_CURRENT));
             if (Build.VERSION.SDK_INT < 16) {
                 notification = builder.getNotification();
                 Log.d("UnblockActivityLogs", "SDK 15");

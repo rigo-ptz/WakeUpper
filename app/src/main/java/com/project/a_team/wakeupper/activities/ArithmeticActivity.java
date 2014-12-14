@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.project.a_team.wakeupper.R;
+import com.project.a_team.wakeupper.UnblockActivity;
 
 import java.util.Random;
 
@@ -25,6 +26,7 @@ public class ArithmeticActivity extends Activity {
         setContentView(R.layout.activity_arithmetic);
 
         generateEquation();
+        UnblockActivity.unlockScreen(this);
     }
 
 

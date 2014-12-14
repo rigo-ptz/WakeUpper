@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.project.a_team.wakeupper.R;
+import com.project.a_team.wakeupper.UnblockActivity;
 
 
 public class ShakeActivity extends Activity implements SensorEventListener {
@@ -56,6 +57,8 @@ public class ShakeActivity extends Activity implements SensorEventListener {
 
         // получили вибрацию
         vibro = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+        UnblockActivity.unlockScreen(this);
     }
 
     @Override
