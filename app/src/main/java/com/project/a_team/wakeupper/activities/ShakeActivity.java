@@ -84,15 +84,7 @@ public class ShakeActivity extends Activity implements SensorEventListener {
             float y = event.values[1];
             float z = event.values[2];
 
-            //...................
-            //тестирование и логи.
-            //...................
-            //Toast.makeText(this, "Хьюстон, мы внутри" + gravity[0] , Toast.LENGTH_LONG).show();
-            /*Log.d(TAG, "x*x " + (x*x));
-            Log.d(TAG, "y*y " + (y*y));
-            Log.d(TAG, "z*z " + (z*z));
-            Log.d(TAG, "const^2 " + SensorManager.GRAVITY_EARTH  * SensorManager.GRAVITY_EARTH);
-            Log.d(TAG, "|(x*x + y*y + z*z) - const^2| " + Math.abs((x*x + y*y + z*z)- SensorManager.GRAVITY_EARTH  * SensorManager.GRAVITY_EARTH));*/
+            //Log.d(TAG, "|(x*x + y*y + z*z) - const^2| " + Math.abs((x*x + y*y + z*z)- SensorManager.GRAVITY_EARTH  * SensorManager.GRAVITY_EARTH));
 
             //######################################################################################
             //#########     примерно от 30(легкая тряска) до 70(сильная тряска)       ##############
@@ -123,13 +115,6 @@ public class ShakeActivity extends Activity implements SensorEventListener {
 
     private void progressCheck() {
         if (myProgressBar.getProgress() == myProgressBar.getMax()) {
-                    /* пока для теста - так. ПОТОМ ПЕРЕПИСАТЬ на возврат к предыдущему экрану с кодом возврата
-                    * уроки 29 - 30 StartAndroid
-                    * Intent intent = new Intent();
-                    * intent.putExtra()
-                    * setResult(RESULT_OK, intent);
-                    * finish();
-                    * */
             Toast.makeText(this, R.string.kurosawa, Toast.LENGTH_SHORT).show();
             onPause();
             vibro.cancel();
@@ -152,19 +137,3 @@ public class ShakeActivity extends Activity implements SensorEventListener {
 
     }
 }
-
-/*
-                private Timer myTimer;
-                private MyTimerTask myTimerTask;
-                if (myTimer != null) {
-                    myTimer.cancel();
-                }
-                if (counter == 1) {
-                    myTimer = new Timer();
-                    myTimerTask = new MyTimerTask();
-                    // срабатывание раз в секунду пока прогресс бар не заполнится
-                    while (myProgressBar.getProgress() != myProgressBar.getMax()) {
-                        myTimer.schedule(myTimerTask, 1000);
-                    }
-                }
- */

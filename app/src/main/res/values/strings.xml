@@ -75,7 +75,7 @@
     <string name="seconds">с</string>
 
     <!-- For DataProvider. Created by Yamushev Igor on 04.12.14 -->
-    <string name="noSuchIDError">К сожалению произошла ошибка такого
+    <string name="noSuchIDError">К сожалению произошла ошибка, такого
                  будильника нет в базе. Пожалуйста, создайте новый</string>
 
     <!-- For PhraseActivity. Created by Sablina Nastya on 12.12.14 -->

@@ -27,15 +27,14 @@ public abstract class DataProvider{
     public static Alarm getSettings(Integer alarmID) {
 
         DBHelper dbHelper = new DBHelper(myContext);
-        // можно и сразу все конструктору отдать внизу, а можно и сеттерами
-        // но так лучше, если ошибка, то вернется версия по умолчанию
+
         Alarm alarm = new Alarm();
 
         // подключаемся к БД
         try {
             db = dbHelper.getWritableDatabase();
         } catch (Exception ex) {
-            Log.d(LOG_TAG, "--- DataProvider, getSettings ---");
+            //Log.d(LOG_TAG, "--- DataProvider, getSettings ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
 
@@ -47,14 +46,12 @@ public abstract class DataProvider{
                                                                    DBHelper.VOLUME, DBHelper.ACTIV},
                                 DBHelper.ID + " = " + alarmID.toString(), null, null, null, null);
         } catch (Exception ex) {
-            Log.d(LOG_TAG, "--- DataProvider, getSettings, WRONG ID ---");
+            //Log.d(LOG_TAG, "--- DataProvider, getSettings, WRONG ID ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
             Toast.makeText(myContext,R.string.noSuchIDError, Toast.LENGTH_LONG).show();
             return alarm;
         }
 
-        // ставим позицию курсора на первую строку выборки
-        // если в выборке нет строк, вернется false
         if (c.moveToFirst()) {
             // определяем номера столбцов по имени в выборке
             int idColIndex = c.getColumnIndex(DBHelper.ID);
@@ -77,15 +74,6 @@ public abstract class DataProvider{
                 int volumeFromDB = c.getInt(volumeColIndex);
                 int activFromDB = c.getInt(activColIndex);
 
-                //Time myTime = new Time();
-                //myTime.set(timeFromDB); // если что переписать ручной перевод времени
-
-                //int timeFromDB = c.getInt(c.getColumnIndex(DBHelper.TIME));
-                //Time myTime = new Time();
-                //myTime.set(timeFromDB); // если что переписать ручной перевод времени
-                //alarm.setTime(myTime);
-                //alarm.setTimeFromSeconds(timeFromDB);
-
                 alarm.setID(idFromDB);
                 alarm.setState(toBoolean(stateFromDB));
                 alarm.setDays(daysFromDB);
@@ -97,8 +85,8 @@ public abstract class DataProvider{
             } while (c.moveToNext());
             c.close();
         } else {
-            Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
-            Log.d(LOG_TAG, "0 rows");
+            //Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
+            //Log.d(LOG_TAG, "0 rows");
             c.close();
         }
 
@@ -123,26 +111,12 @@ public abstract class DataProvider{
         try {
             db = dbHelper.getWritableDatabase();
         } catch (Exception ex) {
-            Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
+            //Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
 
-        /*
-        *  --- ДЕЛАЕМ ЗАПРОС ---
-        *
-        * имя таблицы
-        * список имен возвращаемых полей. При передаче null возвращаются все столбцы
-        * параметр, формирующий выражение WHERE (исключая сам оператор WHERE). Значение null возвращает все строки.
-        * значения аргументов фильтра;
-        * параметр, формирующий выражение GROUP BY (исключая сам оператор GROUP BY). Если GROUP BY не нужен, передается null;
-        * параметр, формирующий выражение HAVING (исключая сам оператор HAVING). Если не нужен, передается null;
-        * параметр, форматирующий выражение ORDER BY (исключая сам оператор ORDER BY). При сортировке по умолчанию передается null.
-        *
-        * */
         Cursor c = db.query(DBHelper.TABLE_NAME, new String[] {DBHelper.ID}, null, null, null, null, null);
 
-        // ставим позицию курсора на первую строку выборки
-        // если в выборке нет строк, вернется false
         if (c.moveToFirst()) {
             // определяем номера столбцов по имени в выборке
             int idColIndex = c.getColumnIndex(DBHelper.ID);
@@ -154,8 +128,8 @@ public abstract class DataProvider{
             } while (c.moveToNext());
             c.close();
         } else {
-            Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
-            Log.d(LOG_TAG, "0 rows");
+            //Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
+            //Log.d(LOG_TAG, "0 rows");
             c.close();
         }
 
@@ -176,9 +150,6 @@ public abstract class DataProvider{
         alarm.setDays(c.getString(c.getColumnIndex(DBHelper.DAYS)));
 
         int timeFromDB = c.getInt(c.getColumnIndex(DBHelper.TIME));
-        //Time myTime = new Time();
-        //myTime.set(timeFromDB); // если что переписать ручной перевод времени
-        //alarm.setTime(myTime);
         alarm.setTimeFromSeconds(timeFromDB);
 
         alarm.setSignal(Uri.parse(c.getString(c.getColumnIndex(DBHelper.SIGNAL)))); // ?
@@ -194,32 +165,25 @@ public abstract class DataProvider{
         try {
             db = dbHelper.getWritableDatabase();
         } catch (Exception ex) {
-            Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
+            //Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
 
         String select = "SELECT * FROM " + DBHelper.TABLE_NAME;
 
         Cursor c = db.rawQuery(select, null);
-        //Cursor c = db.query(DBHelper.TABLE_NAME, null, null, null, null, null, null);
-        Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
-        //Log.d(LOG_TAG, String.valueOf(c.getColumnIndex(DBHelper.ID)));
+
+        //Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
 
         List<Alarm> alarmList = new ArrayList<Alarm>();
 
-/*        while (c.moveToNext()) {
-            alarmList.add(fillAlarm(c));
-        }*/
-
-        // ставим позицию курсора на первую строку выборки
-        // если в выборке нет строк, вернется false
         if (c.moveToFirst()) {
             do{
                 alarmList.add(fillAlarm(c));
             } while (c.moveToNext());
         } else {
-            Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
-            Log.d(LOG_TAG, "0 rows");
+            //Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
+            //Log.d(LOG_TAG, "0 rows");
             c.close();
         }
 

@@ -39,8 +39,8 @@ public class AlarmListAdapter extends BaseAdapter{
     public int getCount() {
         if (mAlarms != null) {
             MainActivity.alarmCount = mAlarms.size();
-            Log.d(LOG_TAG, "--- AlarmListAdapter, getCount() ---");
-            Log.d(LOG_TAG, "alarmCount from getCount = " + MainActivity.alarmCount);
+            //Log.d(LOG_TAG, "--- AlarmListAdapter, getCount() ---");
+            //Log.d(LOG_TAG, "alarmCount from getCount = " + MainActivity.alarmCount);
             if(MainActivity.alarmCount <= 10) {
                 MainActivity.changeVisible(false);
             }
@@ -78,13 +78,9 @@ public class AlarmListAdapter extends BaseAdapter{
         TextView txtTime = (TextView) view.findViewById(R.id.alarm_item_time);
         txtTime.setText(String.format("%02d : %02d", alarm.getTime().hour, alarm.getTime().minute));
 
-        // пока без имени
-        /*TextView txtName = (TextView) view.findViewById(R.id.alarm_item_name);
-        txtName.setText(alarm.name);*/
-
         char[] days = alarm.getDays().toCharArray();
-        Log.d(LOG_TAG, "--- Изменение цвета дней ---");
-        Log.d(LOG_TAG, "--- Все дни ---" + days[0] + " "+ days[1] + " "+ days[2] + " "+ days[3] + " "+ days[4] + " "+ days[5] + " "+ days[6] + " ");
+        //Log.d(LOG_TAG, "--- Изменение цвета дней ---");
+        //Log.d(LOG_TAG, "--- Все дни ---" + days[0] + " "+ days[1] + " "+ days[2] + " "+ days[3] + " "+ days[4] + " "+ days[5] + " "+ days[6] + " ");
 
         updateTextColor((TextView) view.findViewById(R.id.alarm_item_sunday), days[0] == '1');
         updateTextColor((TextView) view.findViewById(R.id.alarm_item_monday), days[1] == '1');
@@ -95,7 +91,6 @@ public class AlarmListAdapter extends BaseAdapter{
         updateTextColor((TextView) view.findViewById(R.id.alarm_item_saturday), days[6] == '1');
 
         ToggleButton btnToggle = (ToggleButton) view.findViewById(R.id.alarm_item_toggle);
-        //btnToggle.setChecked(alarm.getState()); если тут кароч, то он ниже все меняет при листании
         btnToggle.setTag(alarm.getID()); // связываем кнопку вкл. с ID будильника
 
         btnToggle.setChecked(alarm.getState());
@@ -117,7 +112,7 @@ public class AlarmListAdapter extends BaseAdapter{
                 try {
                     ((MainActivity) mContext).startSettingsActivity((Integer) view.getTag());
                 } catch (Exception ex) {
-                    Log.d(LOG_TAG, "--- AlarmListAdapter, onClick ---" + view.getTag().toString());
+                    //Log.d(LOG_TAG, "--- AlarmListAdapter, onClick ---" + view.getTag().toString());
                     Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
                 }
             }
@@ -130,7 +125,7 @@ public class AlarmListAdapter extends BaseAdapter{
                 try {
                     ((MainActivity) mContext).deleteAlarm((Integer) view.getTag());
                 } catch (Exception ex) {
-                    Log.d(LOG_TAG, "--- AlarmListAdapter, onLongClick ---");
+                    //Log.d(LOG_TAG, "--- AlarmListAdapter, onLongClick ---");
                     Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
                 }
                 return true;

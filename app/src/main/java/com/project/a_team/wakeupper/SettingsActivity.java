@@ -13,7 +13,6 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.format.Time;
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -40,7 +39,7 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
 
         Intent intent = getIntent();
         int aID = intent.getIntExtra(MainActivity.alarmID, -1);
-                newAlarm = aID == -1;
+        newAlarm = aID == -1;
 
         /* Слушатели */
         SeekBar volumeSeekBar = (SeekBar)findViewById(R.id.volume);
