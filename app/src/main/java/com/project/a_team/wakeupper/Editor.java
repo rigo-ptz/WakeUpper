@@ -6,7 +6,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -26,7 +25,8 @@ public class Editor {
     public static Boolean createAlarm(Alarm alarm) {
         Log.d(LOG_TAG, "--- Editor, createAlarm() ---");
         Log.d(LOG_TAG, "Create new alarm");
-        DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        //DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
 
         try {
@@ -55,7 +55,8 @@ public class Editor {
         Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
         Log.d(LOG_TAG, "Update alarm with ID="+alarm.getID());
 
-        DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        //DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
 
         try {
@@ -86,7 +87,8 @@ public class Editor {
         Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
         Log.d(LOG_TAG, "Delete alarm with ID="+alarmID);
 
-        DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        //DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
 
         try {
@@ -109,7 +111,8 @@ public class Editor {
     }
 
     public static void changeState(Integer alarmID, Boolean state) {
-        DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        //DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
 
         try {

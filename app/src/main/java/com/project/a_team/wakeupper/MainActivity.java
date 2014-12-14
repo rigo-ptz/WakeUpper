@@ -19,8 +19,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.project.a_team.wakeupper.activities.ArithmeticActivity;
-
 
 public class MainActivity extends Activity implements OnClickListener  {
 
@@ -58,7 +56,8 @@ public class MainActivity extends Activity implements OnClickListener  {
         tvAdd.setOnClickListener(this);
 
         // создаем объект для создания и управления версиями БД
-        dbHelper = new DBHelper(this);
+        //dbHelper = new DBHelper(this);
+        dbHelper = new DBHelper(getApplicationContext());
 
         ListView lvMain = (ListView) findViewById(R.id.lvMain);
 
