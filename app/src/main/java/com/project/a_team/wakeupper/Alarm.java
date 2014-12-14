@@ -83,7 +83,6 @@ public class Alarm {
 
     public Integer getTimeInSeconds() { return time.hour * 60 * 60 + time.minute * 60; }
 
-    // Yamushev Igor 03.12.14
     public void setID(Integer ID) { this.ID = ID; }
 
     public void setState(Boolean aState) {
@@ -117,7 +116,7 @@ public class Alarm {
     public void setTimeFromSeconds(Integer seconds) {
         time.hour = seconds / 3600;
         time.minute = seconds % 3600 / 60;
-        Log.d("log", "--- alarm " + time.hour + " " + time.minute);
+        //Log.d("log", "--- alarm " + time.hour + " " + time.minute);
     }
 
     public static void setContext(Context ctx) {

@@ -38,14 +38,9 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings);
 
-        //посылаем в дата контекст для тоста. не удалять, иначе тост не покажется при ошибке
-        //DataProvider.setContext(this);
-
         Intent intent = getIntent();
-        int aID = intent.getIntExtra(MainActivity.alarmID, -1); // второе - по умолчанию
-        newAlarm = aID == -1;
-
-        //Toast.makeText(this, newAlarm.toString(), Toast.LENGTH_SHORT).show();
+        int aID = intent.getIntExtra(MainActivity.alarmID, -1);
+                newAlarm = aID == -1;
 
         /* Слушатели */
         SeekBar volumeSeekBar = (SeekBar)findViewById(R.id.volume);
@@ -68,22 +63,6 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
         } else {
             alarm = DataProvider.getSettings(aID);
         }
-
-        /* FOR TEST */
-        /*
-        alarm.setState(true);
-        alarm.setDays("1010001");
-        Time t = new Time();
-        t.set(0,34,12,0,0,0);
-        alarm.setTime(t);
-        alarm.setSignal(Uri.parse("content://media/internal/audio/media/30"));
-        AudioManager audioManager2 =
-                (AudioManager)getSystemService(Context.AUDIO_SERVICE);
-
-        alarm.setVolume(audioManager2.getStreamMaxVolume(AudioManager.STREAM_ALARM) / 2);
-        alarm.setVibration(true);
-        alarm.setActivity(1);
-        */
 
         /* Отобразить настройки на экране */
 
@@ -299,15 +278,13 @@ public class SettingsActivity extends Activity implements SeekBar.OnSeekBarChang
                                 Toast.makeText(getApplicationContext(),
                                         R.string.errorOnCreateAlarm, Toast.LENGTH_SHORT).show();
                             } else {
-                                //Yamushev Igor 06.12.14
                                 MainActivity.alarmCount++;
-                                Log.d(LOG_TAG, "--- SettingsActivity, onConfirmButtonClick() ---");
-                                Log.d(LOG_TAG, "increase alarmCount = " + MainActivity.alarmCount);
+                                //Log.d(LOG_TAG, "--- SettingsActivity, onConfirmButtonClick() ---");
+                                //Log.d(LOG_TAG, "increase alarmCount = " + MainActivity.alarmCount);
                                 setResult(RESULT_OK);
                                 finish();
                             }
                         } else {
-                            //Yamushev Igor 06.12.14
                             setResult(RESULT_OK);
                             Editor.updateAlarm(alarm);
                             finish();

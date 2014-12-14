@@ -23,9 +23,8 @@ public class Editor {
     static AlarmManager alarmManager;
 
     public static Boolean createAlarm(Alarm alarm) {
-        Log.d(LOG_TAG, "--- Editor, createAlarm() ---");
-        Log.d(LOG_TAG, "Create new alarm");
-        //DBHelper dbHelper = new DBHelper(DBHelper.myContext);
+        //Log.d(LOG_TAG, "--- Editor, createAlarm() ---");
+        //Log.d(LOG_TAG, "Create new alarm");
         DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
 
@@ -35,7 +34,7 @@ public class Editor {
             ContentValues values = new ContentValues(putValues(alarm));
 
             long rowID = db.insert(DBHelper.TABLE_NAME, null, values);
-            Log.d(LOG_TAG, "rowID = " + rowID);
+            //Log.d(LOG_TAG, "rowID = " + rowID);
 
             dbHelper.close();
 
@@ -44,29 +43,27 @@ public class Editor {
                 updateAlarmManager(alarm);
             }
         } catch (Exception ex) {
-            Log.d(LOG_TAG, "--- Editor, createAlarm() ---");
-            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+            //Log.d(LOG_TAG, "--- Editor, createAlarm() ---");
+            //Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
             return false;
         }
         return true;
     }
 
     public static void updateAlarm(Alarm alarm) {
-        Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
-        Log.d(LOG_TAG, "Update alarm with ID="+alarm.getID());
+        //Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
+        //Log.d(LOG_TAG, "Update alarm with ID="+alarm.getID());
 
-        //DBHelper dbHelper = new DBHelper(DBHelper.myContext);
         DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
 
         try {
             db = dbHelper.getWritableDatabase();
-
             ContentValues values = new ContentValues(putValues(alarm));
 
             int updCount = db.update(DBHelper.TABLE_NAME, values,
                     DBHelper.ID + " = " + alarm.getID().toString(), null);
-            Log.d(LOG_TAG, "updated rows count = " + updCount);
+            //Log.d(LOG_TAG, "updated rows count = " + updCount);
 
             dbHelper.close();
 
@@ -77,17 +74,15 @@ public class Editor {
                 deleteAlarmFromManager(alarm.getID());
             }
         } catch (Exception ex) {
-            Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
-            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+            //Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
+            //Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
-
     }
 
     public static void deleteAlarm(Integer alarmID) {
-        Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
-        Log.d(LOG_TAG, "Delete alarm with ID="+alarmID);
+        //Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
+        //Log.d(LOG_TAG, "Delete alarm with ID="+alarmID);
 
-        //DBHelper dbHelper = new DBHelper(DBHelper.myContext);
         DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
 
@@ -96,22 +91,19 @@ public class Editor {
 
             int delCount = db.delete(DBHelper.TABLE_NAME,
                     DBHelper.ID + " = " + alarmID.toString(), null);
-            Log.d(LOG_TAG, "deleted rows count = " + delCount);
+            //Log.d(LOG_TAG, "deleted rows count = " + delCount);
 
             dbHelper.close();
 
             // безусловно удаляем будильник
             deleteAlarmFromManager(alarmID);
         } catch (Exception ex) {
-            Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
-            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+            //Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
+            //Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
-
-
     }
 
     public static void changeState(Integer alarmID, Boolean state) {
-        //DBHelper dbHelper = new DBHelper(DBHelper.myContext);
         DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
 
@@ -129,15 +121,13 @@ public class Editor {
 
             int updCount = db.update(DBHelper.TABLE_NAME, newState,
                     DBHelper.ID + " = " + alarmID.toString(), null);
-            Log.d(LOG_TAG, "updated rows count = " + updCount);
+            //Log.d(LOG_TAG, "updated rows count = " + updCount);
 
             dbHelper.close();
-
         } catch (Exception ex) {
-            Log.d(LOG_TAG, "--- Editor, changeState() ---");
-            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+            //Log.d(LOG_TAG, "--- Editor, changeState() ---");
+            //Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
-
     }
 
     private static ContentValues putValues(Alarm alarm) {
@@ -214,8 +204,8 @@ public class Editor {
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
         long msUntilAlarm = calendar.getTimeInMillis() - System.currentTimeMillis();
-        Log.d(LOG_TAG, "--- Editor, updateAlarmManager() ---");
-        Log.d(LOG_TAG, "Until alarm " + alarm.getID() + " alert: " + (msUntilAlarm/1000) + " sec");
+        //Log.d(LOG_TAG, "--- Editor, updateAlarmManager() ---");
+        //Log.d(LOG_TAG, "Until alarm " + alarm.getID() + " alert: " + (msUntilAlarm/1000) + " sec");
         Toast.makeText(appContext, "Будильник сработает через " + (msUntilAlarm)/1000 + " секунд", Toast.LENGTH_LONG).show();
     }
 
@@ -240,7 +230,7 @@ public class Editor {
     }
 
     public static void setContext(Context context) {
-        Log.d(LOG_TAG, "--- Editor, setContext() ---");
+        //Log.d(LOG_TAG, "--- Editor, setContext() ---");
         appContext = context;
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
