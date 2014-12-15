@@ -28,7 +28,7 @@
     <string name="imgAbout">Shaker Image</string>
 
     <!-- For Choose. Created by kanphis on 02.12.14 -->
-    <string name="choose_description">Выберите числа кратные</string>
+    <string name="choose_description">Выберите числа, кратные</string>
     <string name="tryTryAgain">Неправильно! Попробуйте еще раз</string>
 
     <!-- For Main. Created by Yamushev Igor on 16.11.14 -->
