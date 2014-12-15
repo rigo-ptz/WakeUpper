@@ -7,4 +7,6 @@
     <dimen name="paddingTop"> 10dp </dimen>
     <dimen name="bigTxtSize"> 25sp </dimen>
     <dimen name="mediumTxtSize"> 20sp </dimen>
+
+    <dimen name="listItem"> 4dp </dimen>
 </resources>

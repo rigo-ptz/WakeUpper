@@ -149,4 +149,15 @@
         <item>женщину</item>
     </string-array>
 
+    <!-- For alarm_list_item. Created by Yamushev Igor on 15.12.14 -->
+    <string name="tim00">00:00</string>
+    <string name="pnd">П</string>
+    <string name="vt">В</string>
+    <string name="sr">С</string>
+    <string name="cht">Ч</string>
+    <string name="pat">П</string>
+    <string name="sub">С</string>
+    <string name="vsk">В</string>
+    <string name="on">Вкл</string>
+    <string name="off">Выкл</string>
 </resources>
