@@ -43,7 +43,6 @@ public class Editor {
 
             // добавление в сис. планировщик, если enabled
             if (alarm.getState()) {
-                alarm.setID((int) rowID);
                 updateAlarmManager(alarm);
             }
         } catch (Exception ex) {
