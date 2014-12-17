@@ -25,6 +25,7 @@ public class AlarmReceiver extends BroadcastReceiver{
     public void onReceive(Context context, Intent intent) {
         // Получаем номер будильника
         int alarmID = intent.getIntExtra(MainActivity.alarmID, -1);
+        Log.d("AlarmReceiverLogs", "Alarm #" + alarmID + " received");
         // Если номер будильника меньше 0 - будильника как-то даже и нету
         if (alarmID < 0) {
             return;

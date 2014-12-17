@@ -34,7 +34,7 @@ public abstract class DataProvider{
         try {
             db = dbHelper.getWritableDatabase();
         } catch (Exception ex) {
-            //Log.d(LOG_TAG, "--- DataProvider, getSettings ---");
+            Log.d(LOG_TAG, "--- DataProvider, getSettings ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
 
@@ -46,7 +46,7 @@ public abstract class DataProvider{
                                                                    DBHelper.VOLUME, DBHelper.ACTIV},
                                 DBHelper.ID + " = " + alarmID.toString(), null, null, null, null);
         } catch (Exception ex) {
-            //Log.d(LOG_TAG, "--- DataProvider, getSettings, WRONG ID ---");
+            Log.d(LOG_TAG, "--- DataProvider, getSettings, WRONG ID ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
             Toast.makeText(myContext,R.string.noSuchIDError, Toast.LENGTH_LONG).show();
             return alarm;
@@ -85,8 +85,8 @@ public abstract class DataProvider{
             } while (c.moveToNext());
             c.close();
         } else {
-            //Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
-            //Log.d(LOG_TAG, "0 rows");
+            Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
+            Log.d(LOG_TAG, "0 rows");
             c.close();
         }
 
@@ -111,7 +111,7 @@ public abstract class DataProvider{
         try {
             db = dbHelper.getWritableDatabase();
         } catch (Exception ex) {
-            //Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
+            Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
 
@@ -128,8 +128,8 @@ public abstract class DataProvider{
             } while (c.moveToNext());
             c.close();
         } else {
-            //Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
-            //Log.d(LOG_TAG, "0 rows");
+            Log.d(LOG_TAG, "--- DataProvider, getIDs ---");
+            Log.d(LOG_TAG, "0 rows");
             c.close();
         }
 
@@ -165,7 +165,7 @@ public abstract class DataProvider{
         try {
             db = dbHelper.getWritableDatabase();
         } catch (Exception ex) {
-            //Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
+            Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
             Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
 
@@ -182,8 +182,8 @@ public abstract class DataProvider{
                 alarmList.add(fillAlarm(c));
             } while (c.moveToNext());
         } else {
-            //Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
-            //Log.d(LOG_TAG, "0 rows");
+            Log.d(LOG_TAG, "--- DataProvider, getAlarms ---");
+            Log.d(LOG_TAG, "0 rows");
             c.close();
         }
 

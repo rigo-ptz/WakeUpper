@@ -52,8 +52,8 @@ public class Editor {
     }
 
     public static void updateAlarm(Alarm alarm) {
-        //Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
-        //Log.d(LOG_TAG, "Update alarm with ID="+alarm.getID());
+        Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
+        Log.d(LOG_TAG, "Update alarm with ID="+alarm.getID());
 
         DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
@@ -75,14 +75,14 @@ public class Editor {
                 deleteAlarmFromManager(alarm.getID());
             }
         } catch (Exception ex) {
-            //Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
-            //Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+            Log.d(LOG_TAG, "--- Editor, updateAlarm() ---");
+            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
     }
 
     public static void deleteAlarm(Integer alarmID) {
-        //Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
-        //Log.d(LOG_TAG, "Delete alarm with ID="+alarmID);
+        Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
+        Log.d(LOG_TAG, "Delete alarm with ID="+alarmID);
 
         DBHelper dbHelper = new DBHelper(appContext);
         SQLiteDatabase db;
@@ -99,8 +99,8 @@ public class Editor {
             // безусловно удаляем будильник
             deleteAlarmFromManager(alarmID);
         } catch (Exception ex) {
-            //Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
-            //Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+            Log.d(LOG_TAG, "--- Editor, deleteAlarm() ---");
+            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
     }
 
@@ -126,8 +126,8 @@ public class Editor {
 
             dbHelper.close();
         } catch (Exception ex) {
-            //Log.d(LOG_TAG, "--- Editor, changeState() ---");
-            //Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
+            Log.d(LOG_TAG, "--- Editor, changeState() ---");
+            Log.d(LOG_TAG, ex.getClass() + " error: " + ex.getMessage());
         }
     }
 
@@ -205,8 +205,8 @@ public class Editor {
 
         alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), alarmIntent);
         long msUntilAlarm = calendar.getTimeInMillis() - System.currentTimeMillis();
-        //Log.d(LOG_TAG, "--- Editor, updateAlarmManager() ---");
-        //Log.d(LOG_TAG, "Until alarm " + alarm.getID() + " alert: " + (msUntilAlarm/1000) + " sec");
+        Log.d(LOG_TAG, "--- Editor, updateAlarmManager() ---");
+        Log.d(LOG_TAG, "Until alarm " + alarm.getID() + " alert: " + (msUntilAlarm/1000) + " sec");
         Resources res = appContext.getResources();
         String toast = res.getString(R.string.untilAlarm);
         msUntilAlarm /= 1000;
@@ -251,7 +251,7 @@ public class Editor {
     }
 
     public static void setContext(Context context) {
-        //Log.d(LOG_TAG, "--- Editor, setContext() ---");
+        Log.d(LOG_TAG, "--- Editor, setContext() ---");
         appContext = context;
         alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
