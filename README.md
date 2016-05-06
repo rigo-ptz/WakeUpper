@@ -1,5 +1,5 @@
 WakeUpper
 =========
 
-The project for a university course. 
-Приложение - будильник.
+Project for a university course. 
+It represents alarm watch with different tasks for turning it off.
